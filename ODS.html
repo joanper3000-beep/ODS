@@ -1,0 +1,6632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ODS - Agenda 2030</title>
+
+<style>
+
+/* ---------------- GENERAL ---------------- */
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+background-size:400% 400%;
+
+animation:gradient 12s ease infinite;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+overflow-x:hidden;
+}
+@keyframes gradient{
+
+0%{
+background-position:0% 50%;
+}
+
+50%{
+background-position:100% 50%;
+}
+
+100%{
+background-position:0% 50%;
+}
+
+}
+/* ---------------- PARTICULAS ---------------- */
+
+#particles{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+z-index:-1;
+overflow:hidden;
+}
+
+.particle{
+position:absolute;
+width:8px;
+height:8px;
+background:rgba(255,255,255,0.5);
+border-radius:50%;
+animation:float 15s linear infinite;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(100vh) scale(0);
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-10vh) scale(1);
+opacity:0;
+}
+
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(10px);
+padding:15px;
+z-index:1000;
+}
+
+nav ul{
+display:flex;
+justify-content:center;
+gap:30px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+nav a:hover{
+text-shadow:
+0 0 10px #00d4ff,
+0 0 20px #00d4ff;
+color:#00d4ff;
+}
+
+/* ---------------- HEADER ---------------- */
+
+header{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+background:
+linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1600&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+animation:fadeIn 2s;
+}
+
+header h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+header p{
+font-size:22px;
+max-width:700px;
+line-height:1.6;
+opacity:0.9;
+}
+
+.btn{
+box-shadow:
+0 0 15px rgba(0,212,255,0.5);
+
+letter-spacing:1px;
+margin-top:30px;
+padding:15px 35px;
+border:none;
+border-radius:40px;
+background:#00d4ff;
+color:black;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.4s;
+}
+
+.btn:hover{
+transform:scale(1.1);
+background:white;
+}
+
+/* ---------------- SECCIONES ---------------- */
+
+section{
+padding:90px 10%;
+}
+
+.section-title{
+
+text-align:center;
+font-size:40px;
+margin-bottom:50px;
+
+text-shadow:
+0 0 10px #00d4ff,
+0 0 20px #00d4ff,
+0 0 40px #00d4ff;
+
+}
+
+/* ---------------- INFO ---------------- */
+
+.info{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+}
+
+.info-box{
+background:rgba(255,255,255,0.08);
+padding:30px;
+border-radius:20px;
+backdrop-filter:blur(8px);
+transition:0.4s;
+}
+
+.info-box:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.15);
+}
+
+.info-box h3{
+margin-bottom:15px;
+font-size:25px;
+}
+
+/* ---------------- GRID ODS ---------------- */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+.card{
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(10px);
+
+border:1px solid rgba(255,255,255,0.2);
+padding:35px;
+border-radius:18px;
+text-align:center;
+font-weight:bold;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+font-size:18px;
+position:relative;
+overflow:hidden;
+}
+
+.card:hover{
+box-shadow:
+0 0 20px rgba(0,212,255,0.6),
+0 0 40px rgba(0,212,255,0.4);
+transform:translateY(-10px) scale(1.05);
+}
+
+.card::before{
+content:'';
+position:absolute;
+top:0;
+left:-100%;
+width:100%;
+height:100%;
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.4),
+transparent
+);
+transition:0.7s;
+}
+
+.card:hover::before{
+left:100%;
+}
+
+/* COLORES ODS */
+
+.ods1{background:#e5243b;}
+.ods2{background:#dda63a;}
+.ods3{background:#4c9f38;}
+.ods4{background:#c5192d;}
+.ods5{background:#ff3a21;}
+.ods6{background:#26bde2;}
+.ods7{background:#fcc30b;color:black;}
+.ods8{background:#a21942;}
+.ods9{background:#fd6925;}
+.ods10{background:#dd1367;}
+.ods11{background:#fd9d24;color:black;}
+.ods12{background:#bf8b2e;}
+.ods13{background:#3f7e44;}
+.ods14{background:#0a97d9;}
+.ods15{background:#56c02b;color:black;}
+.ods16{background:#00689d;}
+.ods17{background:#19486a;}
+
+/* ---------------- CONTADORES ---------------- */
+
+.counter-grid{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+}
+
+.counter-box{
+background:rgba(255,255,255,0.08);
+padding:40px;
+border-radius:20px;
+width:240px;
+text-align:center;
+backdrop-filter:blur(10px);
+transition:0.4s;
+}
+
+.counter-box:hover{
+transform:translateY(-10px);
+}
+
+.counter{
+font-size:55px;
+font-weight:bold;
+color:#00d4ff;
+margin-bottom:10px;
+}
+
+/* ---------------- TIMELINE ---------------- */
+
+.timeline{
+position:relative;
+max-width:900px;
+margin:auto;
+padding:40px 0;
+}
+
+.timeline::after{
+content:'';
+position:absolute;
+width:6px;
+background:#00d4ff;
+top:0;
+bottom:0;
+left:50%;
+margin-left:-3px;
+}
+
+.timeline-item{
+padding:20px 40px;
+position:relative;
+width:50%;
+}
+
+.timeline-item::after{
+content:'';
+position:absolute;
+width:20px;
+height:20px;
+right:-10px;
+background:#00d4ff;
+border-radius:50%;
+top:30px;
+}
+
+.left{
+left:0;
+}
+
+.right{
+left:50%;
+}
+
+.right::after{
+left:-10px;
+}
+
+.timeline-content{
+padding:20px;
+background:rgba(255,255,255,0.08);
+border-radius:15px;
+backdrop-filter:blur(8px);
+}
+
+/* ---------------- QUIZ ---------------- */
+
+.quiz-container{
+max-width:700px;
+margin:auto;
+background:rgba(255,255,255,0.08);
+padding:40px;
+border-radius:20px;
+text-align:center;
+backdrop-filter:blur(10px);
+}
+
+.quiz-container button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#00d4ff;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
+
+.quiz-container button:hover{
+transform:scale(1.05);
+}
+
+#answer{
+margin-top:20px;
+font-size:22px;
+}
+#answers{
+display:flex;
+flex-direction:column;
+gap:15px;
+margin-top:25px;
+}
+
+#answers button{
+
+padding:15px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+font-size:17px;
+font-weight:bold;
+transition:0.3s;
+background:#00d4ff;
+color:black;
+
+}
+
+#answers button:hover{
+
+transform:scale(1.03);
+background:white;
+
+}
+
+#result{
+margin-top:20px;
+font-size:22px;
+font-weight:bold;
+}
+.hidden{
+opacity:0;
+transform:translateY(60px);
+transition:all 1s ease;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
+}
+#timer{
+
+margin-top:20px;
+font-size:25px;
+font-weight:bold;
+color:#00d4ff;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+/* ---------------- MODAL ---------------- */
+
+.modal{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.8);
+justify-content:center;
+align-items:center;
+z-index:2000;
+padding:20px;
+}
+
+.modal-content{
+    max-height:80vh;
+overflow-y:auto;
+background:white;
+color:black;
+padding:40px;
+border-radius:20px;
+max-width:700px;
+width:100%;
+animation:zoom 0.4s;
+}
+
+.close{
+float:right;
+font-size:28px;
+cursor:pointer;
+}
+#modeBtn{
+
+padding:10px 15px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:18px;
+background:white;
+
+}
+
+.light-mode{
+
+background:#f5f5f5;
+color:black;
+
+}
+
+.light-mode nav{
+
+background:rgba(255,255,255,0.7);
+
+}
+
+.light-mode .info-box,
+.light-mode .counter-box,
+.light-mode .timeline-content,
+.light-mode .quiz-container{
+
+background:white;
+color:black;
+
+}
+.typing{
+
+overflow:hidden;
+white-space:nowrap;
+border-right:4px solid white;
+width:0;
+animation:
+typing 4s steps(40,end) forwards,
+blink .8s infinite;
+
+}
+
+@keyframes typing{
+
+from{
+width:0;
+}
+
+to{
+width:100%;
+}
+
+}
+
+@keyframes blink{
+
+50%{
+border-color:transparent;
+}
+
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer{
+text-align:center;
+padding:30px;
+background:#111;
+font-size:18px;
+}
+
+/* ---------------- ANIMACIONES ---------------- */
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(-20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@keyframes zoom{
+from{
+transform:scale(0.7);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<nav>
+<ul>
+<button onclick="toggleMode()" id="modeBtn">
+🌙
+</button>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#ods">ODS</a></li>
+<li><a href="#impacto">Impacto</a></li>
+<li><a href="#historia">Historia</a></li>
+<li><a href="#quiz">Quiz</a></li>
+</ul>
+</nav>
+
+<header id="inicio">
+
+<h1 class="typing">Objetivos de Desarrollo Sostenible</h1>
+
+<p>
+Los ODS son 17 objetivos creados por la ONU para construir
+un mundo más justo, sostenible y con mejor calidad de vida.
+</p>
+
+<button class="btn" onclick="document.getElementById('ods').scrollIntoView()">
+Explorar ODS
+</button>
+
+</header>
+
+<section id="ods" class="hidden">
+
+<h2 class="section-title">Los 17 ODS</h2>
+
+<div class="grid">
+
+<div class="card"
+style="
+background:linear-gradient(135deg,#00d4ff,#0077ff);
+color:white;
+"
+onclick="openODS(0)">
+🌍 ¿Qué son los ODS?
+</div>
+<div class="card ods1" onclick="openODS(1)">ODS 1<br>Fin de la pobreza</div>
+<div class="card ods2" onclick="openODS(2)">ODS 2<br>Hambre cero</div>
+<div class="card ods3" onclick="openODS(3)">ODS 3<br>Salud y bienestar</div>
+<div class="card ods4" onclick="openODS(4)">ODS 4<br>Educación de calidad</div>
+<div class="card ods5" onclick="openODS(5)">ODS 5<br>Igualdad de género</div>
+<div class="card ods6" onclick="openODS(6)">ODS 6<br>Agua limpia</div>
+<div class="card ods7" onclick="openODS(7)">ODS 7<br>Energía limpia</div>
+<div class="card ods8" onclick="openODS(8)">ODS 8<br>Trabajo decente</div>
+<div class="card ods9" onclick="openODS(9)">ODS 9<br>Industria e innovación</div>
+<div class="card ods10" onclick="openODS(10)">ODS 10<br>Reducción desigualdades</div>
+<div class="card ods11" onclick="openODS(11)">ODS 11<br>Ciudades sostenibles</div>
+<div class="card ods12" onclick="openODS(12)">ODS 12<br>Consumo responsable</div>
+<div class="card ods13" onclick="openODS(13)">ODS 13<br>Acción climática</div>
+<div class="card ods14" onclick="openODS(14)">ODS 14<br>Vida submarina</div>
+<div class="card ods15" onclick="openODS(15)">ODS 15<br>Vida terrestre</div>
+<div class="card ods16" onclick="openODS(16)">ODS 16<br>Paz y justicia</div>
+<div class="card ods17" onclick="openODS(17)">ODS 17<br>Alianzas</div>
+
+</div>
+
+</section>
+
+<section id="impacto" class="hidden">
+
+<h2 class="section-title">Impacto Mundial</h2>
+
+<div class="counter-grid">
+
+<div class="counter-box">
+<div class="counter" data-target="17">0</div>
+<p>Objetivos globales</p>
+</div>
+
+<div class="counter-box">
+<div class="counter" data-target="193">0</div>
+<p>Países participantes</p>
+</div>
+
+<div class="counter-box">
+<div class="counter" data-target="2030">0</div>
+<p>Meta Agenda 2030</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="historia" class="hidden">
+
+<h2 class="section-title">Historia de los ODS</h2>
+
+<div class="timeline">
+
+<div class="timeline-item left">
+<div class="timeline-content">
+<h3>2015</h3>
+<p>La ONU crea oficialmente los ODS.</p>
+</div>
+</div>
+
+<div class="timeline-item right">
+<div class="timeline-content">
+<h3>2020</h3>
+<p>Los países implementan estrategias sostenibles.</p>
+</div>
+</div>
+
+<div class="timeline-item left">
+<div class="timeline-content">
+<h3>2025</h3>
+<p>Se aceleran proyectos ambientales y sociales.</p>
+</div>
+</div>
+
+<div class="timeline-item right">
+<div class="timeline-content">
+<h3>2030</h3>
+<p>Fecha meta de cumplimiento mundial.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+<section id="quiz" class="hidden">
+
+<h2 class="section-title">Mini Quiz ODS</h2>
+
+<div class="quiz-container">
+
+<h3 id="question"></h3>
+
+<div id="answers"></div>
+<h3 id="timer">
+⏳ Tiempo: 15
+</h3>
+
+<p id="result"></p>
+
+</div>
+
+</section>
+
+</section>
+
+<div id="modal" class="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">✖</span>
+
+<h2 id="titulo"></h2>
+
+<p id="texto"></p>
+
+</div>
+
+</div>
+<section class="hidden">
+
+<h2 class="section-title">Datos Curiosos</h2>
+
+<div class="info">
+
+<div class="info-box">
+<h3>💧 Agua</h3>
+<p>
+Más de 2 mil millones de personas no tienen agua potable segura.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🌡 Clima</h3>
+<p>
+La temperatura mundial sigue aumentando por el cambio climático.
+</p>
+</div>
+
+<div class="info-box">
+<h3>♻ Reciclaje</h3>
+<p>
+Reciclar ayuda a disminuir la contaminación y ahorrar recursos.
+</p>
+</div>
+
+</div>
+
+</section>
+<section class="hidden">
+
+<h2 class="section-title">
+¿Cómo podemos ayudar?
+</h2>
+
+<div class="info">
+
+<div class="info-box">
+<h3>♻ Reciclar</h3>
+<p>
+Separar residuos ayuda a disminuir la contaminación.
+</p>
+</div>
+
+<div class="info-box">
+<h3>💧 Ahorrar agua</h3>
+<p>
+Cerrar llaves y reutilizar agua ayuda al planeta.
+</p>
+</div>
+
+<div class="info-box">
+<h3>🌱 Cuidar el ambiente</h3>
+<p>
+Plantar árboles y reducir plásticos mejora el ecosistema.
+</p>
+</div>
+
+</div>
+
+</section>
+<h2 id="frase"
+style="text-align:center;margin-bottom:40px;">
+🌍 El futuro depende de nuestras acciones.
+</h2>
+
+<footer>
+Proyecto escolar sobre los ODS • Agenda 2030
+</footer>
+
+<script>
+
+const odsInfo={
+
+0:["¿Qué son los ODS?",`
+
+<h2 style="color:#00d4ff;">
+🌎 ¿Qué son los ODS?
+</h2>
+
+<p>
+Los Objetivos de Desarrollo Sostenible (ODS) son un conjunto
+de 17 metas globales creadas por la Organización de las
+Naciones Unidas (ONU) en 2015.
+</p>
+
+<p>
+Su propósito es mejorar la calidad de vida de las personas,
+proteger el medio ambiente y construir un futuro más justo,
+sostenible e inclusivo para todos.
+</p>
+
+<p>
+Los ODS forman parte de la Agenda 2030, un plan mundial
+que busca resolver algunos de los problemas más importantes
+que enfrenta la humanidad.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Objetivos principales
+</h3>
+
+<div style="
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+margin-top:25px;
+">
+
+<div style="
+background:#ff595e;
+padding:18px;
+border-radius:15px;
+min-width:180px;
+text-align:center;
+font-weight:bold;
+color:white;
+">
+Fin de la pobreza
+</div>
+
+<div style="
+background:#ffca3a;
+padding:18px;
+border-radius:15px;
+min-width:180px;
+text-align:center;
+font-weight:bold;
+color:white;
+">
+Reducción de desigualdades
+</div>
+
+<div style="
+background:#8ac926;
+padding:18px;
+border-radius:15px;
+min-width:180px;
+text-align:center;
+font-weight:bold;
+color:white;
+">
+Protección del planeta
+</div>
+
+<div style="
+background:#1982c4;
+padding:18px;
+border-radius:15px;
+min-width:180px;
+text-align:center;
+font-weight:bold;
+color:white;
+">
+Desarrollo sostenible
+</div>
+
+</div>
+
+<h3 style="margin-top:30px;">
+📚 Importancia de los ODS
+</h3>
+
+<p>
+Los ODS son importantes porque promueven el cuidado del
+planeta, la igualdad de oportunidades y la cooperación
+entre los países.
+</p>
+
+<p>
+Además, ayudan a combatir problemas como la pobreza,
+el hambre, la contaminación, el cambio climático y
+la falta de acceso a educación y salud.
+</p>
+
+<p>
+Cada objetivo está conectado con los demás, por lo que
+el avance de uno contribuye al cumplimiento de los otros.
+</p>
+
+<h3 style="margin-top:30px;">
+🔗 Los 17 Objetivos
+</h3>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:12px;
+margin-top:20px;
+">
+
+<div>ODS 1 • Fin de la pobreza</div>
+<div>ODS 2 • Hambre cero</div>
+<div>ODS 3 • Salud y bienestar</div>
+<div>ODS 4 • Educación de calidad</div>
+<div>ODS 5 • Igualdad de género</div>
+<div>ODS 6 • Agua limpia y saneamiento</div>
+<div>ODS 7 • Energía asequible y no contaminante</div>
+<div>ODS 8 • Trabajo decente y crecimiento económico</div>
+<div>ODS 9 • Industria, innovación e infraestructura</div>
+<div>ODS 10 • Reducción de las desigualdades</div>
+<div>ODS 11 • Ciudades y comunidades sostenibles</div>
+<div>ODS 12 • Producción y consumo responsables</div>
+<div>ODS 13 • Acción por el clima</div>
+<div>ODS 14 • Vida submarina</div>
+<div>ODS 15 • Vida de ecosistemas terrestres</div>
+<div>ODS 16 • Paz, justicia e instituciones sólidas</div>
+<div>ODS 17 • Alianzas para lograr los objetivos</div>
+
+</div>
+
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<h3 style="color:#ffd166;">
+🌍 English Version
+</h3>
+
+<p>
+The Sustainable Development Goals (SDGs) are 17 global goals
+created by the United Nations to improve quality of life,
+protect the environment and promote sustainable development.
+</p>
+
+<p>
+These goals aim to end poverty, reduce inequality,
+fight climate change and build a better future for everyone.
+</p>
+
+<p>
+The SDGs are part of the 2030 Agenda and require the
+participation of governments, organizations and citizens
+around the world.
+</p>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#00d4ff;
+">
+The 17 SDGs work together to create a fair, sustainable
+and inclusive future for all.
+</p>
+
+`],
+1:[
+"ODS 1: Fin de la pobreza",`
+
+<h2 style="color:#e5243b;">
+🌍 ODS 1: Fin de la pobreza
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible número 1 busca erradicar
+la pobreza extrema y mejorar la calidad de vida de millones
+de personas en todo el mundo.
+</p>
+
+<p>
+La ONU ha implementado distintas estrategias para reducir
+la pobreza y garantizar acceso a servicios básicos,
+protección social y oportunidades económicas.
+</p>
+
+<h3 style="
+margin-top:30px;
+color:#ff4d6d;
+">
+📌 Principales metas
+</h3>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:25px;
+">
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>💵 1.1 Pobreza extrema</h4>
+
+<p style="margin-top:10px;">
+Erradicar la pobreza extrema para 2030.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>🏠 1.2 Reducir pobreza</h4>
+
+<p style="margin-top:10px;">
+Reducir al menos a la mitad la pobreza nacional.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>🛡 1.3 Protección social</h4>
+
+<p style="margin-top:10px;">
+Garantizar protección social para personas vulnerables.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>📚 1.4 Acceso igualitario</h4>
+
+<p style="margin-top:10px;">
+Acceso a servicios, recursos y tecnología.
+</p>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+Los esfuerzos de la ONU para erradicar la pobreza han sido
+amplios y se enfocan en distintas metas relacionadas con
+la pobreza extrema, la protección social y el acceso
+igualitario a recursos básicos.
+
+</p>
+
+<ul style="
+margin-top:20px;
+padding-left:25px;
+line-height:2;
+font-size:16px;
+">
+
+<li>
+<b>1.1 Pobreza extrema:</b>
+Muy bajo avance (~15%), por lo que resulta altamente
+improbable erradicarla para 2030.
+</li>
+
+<li>
+<b>1.2 Reducción de pobreza nacional:</b>
+Solo el 20% de los países están en camino.
+</li>
+
+<li>
+<b>1.3 Protección social:</b>
+Presenta el mejor avance con aproximadamente
+52% de cobertura global.
+</li>
+
+<li>
+<b>1.4 Acceso igualitario:</b>
+Avance moderado pero desigual (~35%).
+</li>
+
+<li>
+<b>Metas ODS globales:</b>
+Solo el 18% avanzan adecuadamente a nivel mundial.
+</li>
+
+</ul>
+
+<div style="
+display:flex;
+flex-wrap:wrap;
+gap:15px;
+margin-top:20px;
+">
+
+<div style="
+background:#ff0000;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+">
+Rojo → Muy deficiente
+</div>
+
+<div style="
+background:#ff8800;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+">
+Naranja → Bajo
+</div>
+
+<div style="
+background:#00c853;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+">
+Verde → Moderado
+</div>
+
+<div style="
+background:#00b0ff;
+padding:12px 18px;
+border-radius:12px;
+font-weight:bold;
+">
+Azul/Morado → Referencia general
+</div>
+
+</div>
+
+
+<div style="margin-top:30px;">
+
+<p><b>💵 Pobreza extrema</b></p>
+
+<div style="
+width:100%;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin:10px 0 25px 0;
+">
+
+<div style="
+width:15%;
+background:#ff0000;
+padding:10px;
+text-align:right;
+font-weight:bold;
+">
+15%
+</div>
+
+</div>
+
+<p><b>🏠 Reducción de pobreza nacional</b></p>
+
+<div style="
+width:100%;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin:10px 0 25px 0;
+">
+
+<div style="
+width:20%;
+background:#ff8800;
+padding:10px;
+text-align:right;
+font-weight:bold;
+">
+20%
+</div>
+
+</div>
+
+<p><b>🛡 Protección social</b></p>
+
+<div style="
+width:100%;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin:10px 0 25px 0;
+">
+
+<div style="
+width:52%;
+background:#00c853;
+padding:10px;
+text-align:right;
+font-weight:bold;
+">
+52%
+</div>
+
+</div>
+
+<p><b>📚 Acceso igualitario</b></p>
+
+<div style="
+width:100%;
+background:#222;
+border-radius:20px;
+overflow:hidden;
+margin:10px 0 25px 0;
+">
+
+<div style="
+width:35%;
+background:#00b0ff;
+padding:10px;
+text-align:right;
+font-weight:bold;
+">
+35%
+</div>
+
+</div>
+
+</div>
+
+<h3 style="
+margin-top:35px;
+color:#ff4d6d;
+">
+⚠ Situación actual
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+Actualmente, solo el 18% de las metas de los ODS avanzan
+adecuadamente a nivel global, lo que demuestra que todavía
+existen enormes desafíos económicos y sociales.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+La pobreza extrema continúa afectando a millones de personas,
+limitando el acceso a educación, salud, alimentación y vivienda.
+
+</p>
+
+<h3 style="
+margin-top:35px;
+color:#00d4ff;
+">
+🌱 Soluciones
+</h3>
+
+<ul style="
+margin-top:20px;
+padding-left:25px;
+line-height:2;
+font-size:16px;
+">
+
+<li>Crear empleos dignos</li>
+
+<li>Mejorar acceso a educación</li>
+
+<li>Fortalecer programas sociales</li>
+
+<li>Garantizar acceso a tecnología y servicios</li>
+
+<li>Reducir desigualdades económicas</li>
+
+</ul>
+<hr style="
+margin:40px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<h3 style="
+color:#00d4ff;
+">
+🧬 ODS y su aplicación en la Biología
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+Los seres humanos, como cualquier especie, responden
+biológicamente a la disponibilidad de recursos y a las
+condiciones del entorno.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+En regiones con alta pobreza y mortalidad infantil,
+como algunas zonas de África subsahariana, se desarrollan
+estrategias de supervivencia relacionadas con una mayor
+fertilidad y un aumento en la cantidad de descendencia.
+
+</p>
+
+<h3 style="
+margin-top:35px;
+color:#ff758f;
+">
+⚠ Consecuencias biológicas
+</h3>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+margin-top:25px;
+">
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>🍞 Desnutrición</h4>
+
+<p style="margin-top:10px;">
+La falta de alimento afecta el desarrollo cerebral y
+reduce la capacidad cognitiva infantil.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>🧠 Desarrollo cerebral</h4>
+
+<p style="margin-top:10px;">
+La desnutrición disminuye conexiones neuronales y afecta
+el aprendizaje y la productividad.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>💼 Menor productividad</h4>
+
+<p style="margin-top:10px;">
+La pobreza limita oportunidades laborales y el desarrollo
+económico de las poblaciones.
+</p>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:25px;
+line-height:1.9;
+font-size:16px;
+">
+
+Esto genera un ciclo biológico de pobreza donde la falta
+de recursos provoca desnutrición, menor desarrollo humano
+y reproducción continua de condiciones de pobreza extrema.
+
+</p>
+
+<h3 style="
+margin-top:35px;
+color:#ff4d6d;
+">
+🦠 Enfermedades y pobreza
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+Las regiones con altos niveles de pobreza también presentan
+mayor carga de enfermedades infecciosas y parasitarias,
+como malaria, tuberculosis y helmintos.
+
+</p>
+
+<ul style="
+margin-top:20px;
+padding-left:25px;
+line-height:2;
+font-size:16px;
+">
+
+<li>
+🩺 Las infecciones crónicas consumen gran parte de la
+energía metabólica del cuerpo.
+</li>
+
+<li>
+🧠 Esto afecta el crecimiento, la cognición y la fuerza
+laboral.
+</li>
+
+<li>
+⚡ El sistema inmune trabaja constantemente, reduciendo
+la energía disponible para el desarrollo físico y mental.
+</li>
+
+<li>
+🌍 La reducción de mortalidad materna e infantil avanza
+lentamente debido a estos factores biológicos.
+</li>
+
+</ul>
+
+<h3 style="
+margin-top:35px;
+color:#00ffae;
+">
+🌱 Importancia del ODS 1
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+Combatir la pobreza no solo mejora la economía, sino
+también la salud, el desarrollo cerebral, la educación
+y la calidad de vida de millones de personas.
+
+</p>
+
+<p style="
+margin-top:25px;
+font-size:18px;
+font-weight:bold;
+color:#00d4ff;
+">
+
+Erradicar la pobreza es esencial para romper ciclos
+biológicos y sociales que afectan el bienestar humano.
+
+</p>
+
+
+`],
+2:["ODS 2: Hambre Cero",`
+
+<h2 style="color:#dda63a;">
+ODS 2: Hambre Cero
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 2 busca poner fin al hambre,
+garantizar seguridad alimentaria y mejorar la nutrición en todo
+el mundo. Este objetivo también promueve una agricultura sostenible
+que permita alimentar a la población sin dañar el medio ambiente.
+</p>
+
+<p>
+Actualmente millones de personas viven en situación de pobreza
+extrema y no tienen acceso suficiente a alimentos nutritivos.
+Esto provoca problemas de salud, desnutrición y enfermedades,
+especialmente en niños y personas vulnerables.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Aumento del hambre en el mundo
+</h3>
+
+<p>
+La gráfica representa el aumento aproximado de personas
+que sufren hambre extrema entre 2015 y 2022.
+</p>
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:space-around;
+gap:10px;
+height:260px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
+margin-top:25px;
+">
+
+<div style="text-align:center;">
+<div style="
+height:90px;
+width:50px;
+background:#ffb703;
+border-radius:10px 10px 0 0;
+"></div>
+<p>2015</p>
+<p>500M</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:120px;
+width:50px;
+background:#f4a261;
+border-radius:10px 10px 0 0;
+"></div>
+<p>2017</p>
+<p>550M</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:145px;
+width:50px;
+background:#e76f51;
+border-radius:10px 10px 0 0;
+"></div>
+<p>2018</p>
+<p>600M</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:170px;
+width:50px;
+background:#fb8500;
+border-radius:10px 10px 0 0;
+"></div>
+<p>2019</p>
+<p>650M</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:190px;
+width:50px;
+background:#ff8800;
+border-radius:10px 10px 0 0;
+"></div>
+<p>2020</p>
+<p>680M</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:215px;
+width:50px;
+background:#ff6b00;
+border-radius:10px 10px 0 0;
+"></div>
+<p>2021</p>
+<p>720M</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:240px;
+width:50px;
+background:#d62828;
+border-radius:10px 10px 0 0;
+box-shadow:0 0 20px rgba(214,40,40,0.7);
+"></div>
+<p>2022</p>
+<p>750M</p>
+</div>
+
+</div>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+">
+La gráfica muestra cómo el número de personas con hambre
+ha aumentado constantemente en los últimos años. Factores
+como la pobreza, guerras, cambio climático y crisis económicas
+han empeorado la situación alimentaria mundial.
+</p>
+
+<h3 style="margin-top:25px;">
+📐 Geometría y Trigonometría
+</h3>
+
+<p>
+La geometría y la trigonometría ayudan a representar y analizar
+el crecimiento del hambre mediante gráficas, pendientes y
+estadísticas visuales.
+</p>
+
+<p>
+Por ejemplo, el incremento de personas con hambre puede analizarse
+utilizando líneas de tendencia y figuras geométricas que permiten
+interpretar la velocidad del crecimiento del problema.
+</p>
+
+<p>
+Las matemáticas también ayudan en la agricultura sostenible,
+ya que permiten calcular áreas de cultivo, distribución de agua,
+producción de alimentos y almacenamiento de recursos.
+</p>
+
+<p>
+Gracias a los modelos matemáticos es posible planificar sistemas
+agrícolas más eficientes para alimentar a más personas utilizando
+menos recursos naturales.
+</p>
+
+<h3 style="margin-top:25px;">
+🧬 Biología
+</h3>
+
+<p>
+Desde la biología, el hambre afecta directamente el funcionamiento
+del cuerpo humano y el desarrollo de los seres vivos.
+</p>
+
+<p>
+La desnutrición provoca debilitamiento del sistema inmunológico,
+problemas de crecimiento y menor desarrollo cerebral en niños.
+</p>
+
+<p>
+Las personas que viven en pobreza extrema también tienen mayor
+riesgo de sufrir enfermedades infecciosas como tuberculosis,
+malaria y otras enfermedades relacionadas con la falta de
+alimentación adecuada.
+</p>
+
+<p>
+Además, la falta de nutrientes afecta la producción de energía
+del cuerpo, disminuyendo la capacidad física y mental de las
+personas.
+</p>
+
+<p>
+La biología también estudia cómo el acceso limitado a alimentos
+provoca desequilibrios en los ecosistemas y afecta la supervivencia
+de muchas especies.
+</p>
+
+<h3 style="margin-top:25px;">
+🌍 Impacto Mundial
+</h3>
+
+<p>
+La pobreza y el hambre continúan siendo uno de los mayores retos
+de la humanidad. Según informes internacionales, millones de
+personas todavía viven con menos de 2.15 dólares al día.
+</p>
+
+<p>
+En regiones vulnerables, el crecimiento poblacional supera la
+capacidad de producir suficientes alimentos, lo que incrementa
+la desigualdad y la inseguridad alimentaria.
+</p>
+
+<p>
+Además, el cambio climático provoca sequías, pérdida de cultivos
+y escasez de agua, afectando gravemente la producción agrícola.
+</p>
+
+<h3 style="margin-top:25px;">
+🌱 Posibles soluciones
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.9;
+">
+
+<li>Reducir la pobreza extrema</li>
+
+<li>Garantizar acceso a alimentos nutritivos</li>
+
+<li>Impulsar agricultura sostenible</li>
+
+<li>Mejorar servicios médicos y nutricionales</li>
+
+<li>Reducir desperdicio de alimentos</li>
+
+<li>Promover educación alimentaria</li>
+
+<li>Crear programas de apoyo social</li>
+
+<li>Desarrollar tecnología agrícola</li>
+
+</ul>
+
+<p style="
+margin-top:25px;
+font-weight:bold;
+color:#dda63a;
+font-size:18px;
+">
+Erradicar el hambre es fundamental para construir un mundo
+más saludable, justo y sostenible para las futuras generaciones.
+</p>
+
+`],
+3:["ODS 3: Salud y bienestar",`
+
+<h2 style="color:#4c9f38;">
+ODS 3: Salud y bienestar
+</h2>
+
+<p>
+Los Objetivos de Desarrollo Sostenible fueron creados por la ONU
+para mejorar la calidad de vida de las personas y proteger el planeta.
+Entre estos objetivos destaca el desarrollo de energías limpias,
+ciudades sostenibles y tecnologías que ayuden al medio ambiente.
+</p>
+
+<p>
+La trigonometría y las matemáticas tienen aplicaciones muy importantes
+en el desarrollo sostenible, ya que permiten calcular distancias,
+alturas, ángulos e inclinaciones necesarias para construir
+infraestructura moderna y sistemas de energía renovable.
+</p>
+
+<p>
+Gracias a estos cálculos matemáticos es posible diseñar paneles
+solares, carreteras, edificios resistentes y proyectos relacionados
+con la protección del medio ambiente.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Crecimiento del uso de energía renovable
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+Porcentaje de energía renovable entre 2010 y 2024
+</p>
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:12px;
+height:300px;
+margin-top:35px;
+flex-wrap:wrap;
+">
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:18%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+8%
+</div>
+<p style="margin-top:10px;">2010</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:24%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+12%
+</div>
+<p style="margin-top:10px;">2012</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:30%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+15%
+</div>
+<p style="margin-top:10px;">2014</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:38%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+19%
+</div>
+<p style="margin-top:10px;">2016</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:46%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+23%
+</div>
+<p style="margin-top:10px;">2018</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:54%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+27%
+</div>
+<p style="margin-top:10px;">2020</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:62%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+31%
+</div>
+<p style="margin-top:10px;">2022</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+width:60px;
+height:70%;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.7);
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+">
+35%
+</div>
+<p style="margin-top:10px;">2024</p>
+</div>
+
+</div>
+
+<p style="margin-top:25px;">
+La gráfica representa un modelo matemático lineal, ya que muestra
+cómo el uso de energía renovable aumenta progresivamente con el paso
+del tiempo.
+</p>
+
+<p>
+Las variables utilizadas son los años y el porcentaje de uso de
+energía renovable en el mundo.
+</p>
+
+
+<h3 style="margin-top:30px;">
+☀ Aplicaciones de la trigonometría
+</h3>
+
+<p>
+La trigonometría permite calcular ángulos y distancias necesarios
+para construir paneles solares, medir montañas y diseñar ciudades
+más sostenibles.
+</p>
+
+<p>
+En el Objetivo 7, “Energía asequible y no contaminante”, la
+trigonometría se utiliza para calcular el ángulo correcto de
+inclinación de los paneles solares y aprovechar mejor la luz solar.
+</p>
+
+<p>
+También se utiliza en sistemas de energía renovable, carreteras,
+puentes y edificios resistentes.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Desarrollo sostenible
+</h3>
+
+<p>
+El crecimiento del uso de energía renovable ayuda a disminuir la
+contaminación y protege el medio ambiente.
+</p>
+
+<p>
+Gracias a las matemáticas y la trigonometría es posible desarrollar
+tecnologías más eficientes que contribuyen al cumplimiento de los
+Objetivos de Desarrollo Sostenible.
+</p>
+
+<h3 style="margin-top:30px;">
+🧬 Impacto biológico y bienestar
+</h3>
+
+<p>
+El ODS 3, “Salud y bienestar”, es uno de los Objetivos de Desarrollo
+Sostenible establecidos por la ONU que busca garantizar una vida
+saludable para todas las personas sin importar su edad o condición social.
+</p>
+
+<p>
+Este objetivo es fundamental porque la salud es la base del desarrollo
+humano, ya que permite que las personas estudien, trabajen y vivan
+en mejores condiciones.
+</p>
+
+<p>
+Además, promueve la prevención de enfermedades y el acceso a servicios
+médicos de calidad para mejorar el bienestar de toda la población.
+</p>
+
+<p>
+Desde el punto de vista biológico, el ODS 3 tiene un gran impacto
+en la reducción de enfermedades infecciosas y crónicas que afectan
+al cuerpo humano.
+</p>
+
+<p>
+Al mejorar la nutrición, la higiene y el acceso a vacunas, se fortalece
+el sistema inmunológico de las personas, disminuyendo la propagación
+de virus y bacterias.
+</p>
+
+<p>
+También ayuda a controlar enfermedades como la diabetes,
+problemas cardiovasculares y desnutrición, mejorando el funcionamiento
+de órganos y sistemas del cuerpo humano.
+</p>
+
+<p>
+Gracias a estas acciones aumenta la esperanza y calidad de vida
+de millones de personas alrededor del mundo.
+</p>
+
+<h3 style="margin-top:30px;">
+💉 Soluciones para mejorar la salud
+</h3>
+
+<p>
+Para lograr el ODS 3 es necesario mejorar los sistemas de salud pública,
+aumentar el acceso a medicamentos y vacunas y promover campañas
+de prevención de enfermedades.
+</p>
+
+<p>
+También es importante enseñar hábitos saludables como:
+</p>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>🥗 Buena alimentación</li>
+
+<li>🏃 Actividad física</li>
+
+<li>🧠 Cuidado de la salud mental</li>
+
+<li>💧 Higiene y prevención</li>
+
+<li>💊 Acceso a atención médica</li>
+
+</ul>
+
+<p>
+La educación en salud desde temprana edad ayuda a que las personas
+tomen mejores decisiones sobre su cuerpo y tengan menos riesgos
+biológicos a largo plazo.
+</p>
+
+<p>
+Las redes sociales y campañas informativas también permiten
+dar a conocer información importante sobre prevención y bienestar
+de forma más rápida y efectiva.
+</p>
+
+<h3 style="margin-top:30px;">
+🌍 Importancia del ODS 3
+</h3>
+
+<p>
+El ODS 3 es muy importante porque busca proteger la vida y mejorar
+la salud en todos los niveles.
+</p>
+
+<p>
+Cuando este objetivo se cumple, no solo disminuyen las enfermedades,
+sino que también mejora el desarrollo biológico, social y emocional
+de las personas.
+</p>
+
+<p>
+Si se logra cumplir el ODS 3, existiría una población más sana,
+con mayor esperanza de vida y mejor calidad para todos.
+</p>
+
+<p style="
+margin-top:25px;
+font-weight:bold;
+font-size:18px;
+color:#4c9f38;
+">
+La salud y el bienestar son fundamentales para construir un futuro
+más fuerte, saludable y sostenible.
+</p>
+
+`],
+4:["ODS 4: Educación de calidad",`
+
+<h2 style="color:#00c2ff;">
+📘 ODS 4: Educación de calidad
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 4 busca garantizar una
+educación inclusiva, equitativa y de calidad para todas las
+personas. La educación es fundamental porque permite desarrollar
+habilidades, conocimientos y valores necesarios para mejorar
+la calidad de vida y construir un futuro sostenible.
+</p>
+
+<p>
+Sin embargo, millones de estudiantes todavía enfrentan problemas
+como la falta de internet, escuelas en malas condiciones,
+escasez de materiales educativos y desigualdad de oportunidades.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Principales problemas en las escuelas
+</h3>
+
+<div style="
+margin-top:30px;
+display:flex;
+align-items:flex-end;
+justify-content:space-around;
+height:320px;
+padding:20px;
+background:rgba(255,255,255,0.03);
+border-radius:20px;
+">
+
+<div style="text-align:center;width:120px;">
+<div style="
+height:240px;
+background:#ff4d6d;
+border-radius:15px 15px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-bottom:10px;
+box-shadow:0 0 20px rgba(255,77,109,0.5);
+">
+60%
+</div>
+<p style="margin-top:10px;font-size:13px;">
+6/10 no comprenden<br>lo que leen
+</p>
+</div>
+
+<div style="text-align:center;width:120px;">
+<div style="
+height:280px;
+background:#00b4ff;
+border-radius:15px 15px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-bottom:10px;
+box-shadow:0 0 20px rgba(0,180,255,0.5);
+">
+70%
+</div>
+<p style="margin-top:10px;font-size:13px;">
+7/10 escuelas<br>sin internet
+</p>
+</div>
+
+<div style="text-align:center;width:120px;">
+<div style="
+height:100px;
+background:#ffd166;
+border-radius:15px 15px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:black;
+font-weight:bold;
+padding-bottom:10px;
+box-shadow:0 0 20px rgba(255,209,102,0.5);
+">
+25%
+</div>
+<p style="margin-top:10px;font-size:13px;">
+1/4 maestros<br>sin capacitación
+</p>
+</div>
+
+<div style="text-align:center;width:120px;">
+<div style="
+height:300px;
+background:#06d6a0;
+border-radius:15px 15px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-bottom:10px;
+box-shadow:0 0 20px rgba(6,214,160,0.5);
+">
+80%
+</div>
+<p style="margin-top:10px;font-size:13px;">
+8/10 escuelas<br>sin servicios básicos
+</p>
+</div>
+
+</div>
+
+<p style="
+margin-top:20px;
+font-size:15px;
+opacity:0.9;
+">
+La gráfica muestra algunos de los problemas más importantes
+que afectan la educación en México. La falta de internet,
+servicios básicos y capacitación docente limita el aprendizaje
+de millones de estudiantes.
+</p>
+
+<h3 style="margin-top:25px;">
+📐 Relación con geometría y trigonometría
+</h3>
+
+<p>
+La geometría y la trigonometría tienen aplicaciones importantes
+en la educación y en el desarrollo sostenible. Gracias a estas
+materias es posible resolver problemas relacionados con medidas,
+distancias, alturas y diseño de estructuras.
+</p>
+
+<p>
+Las matemáticas ayudan a construir escuelas más seguras,
+desarrollar tecnologías educativas y mejorar sistemas de
+infraestructura para el aprendizaje.
+</p>
+
+<p>
+Además, fortalecen el razonamiento lógico y la capacidad
+para resolver problemas de la vida diaria.
+</p>
+
+<h3 style="margin-top:25px;">
+🧬 Impacto biológico
+</h3>
+
+<p>
+La educación también influye en el bienestar físico y mental
+de las personas. Una buena educación ayuda a mejorar la salud,
+la alimentación y la calidad de vida.
+</p>
+
+<p>
+Los estudiantes que reciben educación de calidad suelen tener
+mejor desarrollo cognitivo, mayor capacidad de aprendizaje
+y más oportunidades de empleo.
+</p>
+
+<p>
+Además, la educación contribuye a reducir problemas sociales
+como la pobreza, la violencia y la desigualdad.
+</p>
+
+<h3 style="margin-top:25px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para mejorar la educación es necesario invertir en infraestructura
+escolar, acceso a internet, capacitación docente y materiales
+educativos modernos.
+</p>
+
+<p>
+También es importante crear ambientes escolares seguros,
+inclusivos y libres de discriminación para que todos los
+estudiantes puedan aprender adecuadamente.
+</p>
+
+<p>
+Las tecnologías digitales y las plataformas educativas
+pueden ayudar a reducir las desigualdades y facilitar
+el acceso al conocimiento.
+</p>
+
+<p style="
+margin-top:25px;
+font-weight:bold;
+color:#00c2ff;
+">
+La educación de calidad es fundamental para construir
+un futuro con mayores oportunidades, igualdad y desarrollo
+para toda la sociedad.
+</p>
+
+`
+],
+5:["ODS 5: Igualdad de género",`
+
+<h2 style="color:#ff3a21;">
+ODS 5: Igualdad de género
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 5 busca garantizar la igualdad
+de derechos y oportunidades para mujeres y niñas en todo el mundo.
+Sin embargo, el informe de 2023 muestra que todavía estamos lejos
+de alcanzar las metas de la Agenda 2030.
+</p>
+
+<p>
+La desigualdad de género afecta ámbitos sociales, económicos,
+políticos y de salud. Muchas mujeres continúan enfrentando
+violencia, discriminación y limitaciones en el acceso a servicios
+básicos, educación y oportunidades laborales.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Participación de mujeres en política
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Parlamento 2015 • Parlamento 2023 •
+Gobierno Local 2020 • Gobierno Local 2023
+</p>
+
+<div style="margin-top:30px;">
+
+<p><b>🌍 Todo el mundo</b></p>
+
+<div style="
+display:flex;
+gap:10px;
+margin-bottom:20px;
+align-items:flex-end;
+height:140px;
+">
+
+<div style="
+width:60px;
+height:22%;
+background:#ff7b72;
+border-radius:10px 10px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:white;
+font-size:12px;
+padding-bottom:5px;
+">
+22%
+</div>
+
+<div style="
+width:60px;
+height:27%;
+background:#ff3a21;
+border-radius:10px 10px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:white;
+font-size:12px;
+padding-bottom:5px;
+">
+27%
+</div>
+
+<div style="
+width:60px;
+height:35%;
+background:#00b4ff;
+border-radius:10px 10px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:white;
+font-size:12px;
+padding-bottom:5px;
+">
+35%
+</div>
+
+<div style="
+width:60px;
+height:40%;
+background:#0077ff;
+border-radius:10px 10px 0 0;
+display:flex;
+align-items:flex-end;
+justify-content:center;
+color:white;
+font-size:12px;
+padding-bottom:5px;
+">
+40%
+</div>
+
+</div>
+
+<div style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+font-size:14px;
+margin-bottom:25px;
+">
+
+<span style="color:#ff7b72;">■ Parlamento 2015</span>
+
+<span style="color:#ff3a21;">■ Parlamento 2023</span>
+
+<span style="color:#00b4ff;">■ Gobierno Local 2020</span>
+
+<span style="color:#0077ff;">■ Gobierno Local 2023</span>
+
+</div>
+
+<h3>
+🧬 Impacto biológico y de salud
+</h3>
+
+<p>
+La desigualdad de género afecta directamente la salud y calidad
+de vida de millones de mujeres. Muchas regiones presentan falta
+de acceso a salud reproductiva, educación sexual integral y
+métodos de planificación familiar.
+</p>
+
+<p>
+Además, la violencia de género aumentó después de la pandemia,
+mientras que la falta de servicios preventivos, como la vacuna
+contra el VPH, continúa afectando a mujeres y niñas.
+</p>
+
+<h3 style="margin-top:25px;">
+💻 Impacto social y económico
+</h3>
+
+<p>
+Las mujeres siguen realizando la mayor parte del trabajo doméstico
+y de cuidados no remunerados, lo que limita sus oportunidades
+laborales y educativas.
+</p>
+
+<p>
+También existe una brecha digital importante, ya que millones
+de mujeres todavía no tienen acceso a internet o dispositivos
+móviles necesarios para la educación y el empleo.
+</p>
+
+<h3 style="margin-top:25px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para lograr la igualdad de género se necesitan reformas legales,
+educación, acceso a oportunidades y participación política.
+</p>
+
+<p>
+Algunas propuestas incluyen fortalecer la economía del cuidado,
+crear empleos dignos, garantizar derechos de propiedad y aumentar
+la participación femenina en puestos de liderazgo.
+</p>
+
+<p style="
+margin-top:25px;
+font-weight:bold;
+color:#ff3a21;
+">
+La igualdad de género es fundamental para construir un mundo
+más justo, sostenible y con mejores oportunidades para todos.
+</p>
+<hr style="
+margin:30px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+`
+],
+6:[`ODS 6: Agua limpia y saneamiento`,
+
+`
+
+<h2 style="color:#26bde2;">
+💧 ODS 6: Agua limpia y saneamiento
+</h2>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+El Objetivo de Desarrollo Sostenible 6 busca garantizar
+el acceso universal al agua potable y a servicios de
+saneamiento seguros para toda la población.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+El agua es esencial para la vida, la salud y el desarrollo
+de las comunidades. Sin embargo, millones de personas
+aún carecen de acceso a agua limpia y sistemas adecuados
+de drenaje y saneamiento.
+
+</p>
+
+<h3 style="
+margin-top:35px;
+color:#4cc9f0;
+">
+📊 Situación del agua y saneamiento
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+La siguiente gráfica representa el acceso al agua potable
+y los problemas de saneamiento entre 2015 y 2026.
+
+</p>
+
+<div style="
+margin-top:30px;
+background:rgba(255,255,255,0.06);
+padding:30px;
+border-radius:20px;
+overflow-x:auto;
+">
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:space-around;
+height:320px;
+gap:25px;
+">
+
+<div style="text-align:center;">
+<div style="
+height:220px;
+width:35px;
+background:#00d4ff;
+border-radius:10px 10px 0 0;
+"></div>
+
+<div style="
+height:30px;
+width:35px;
+background:#ff4d6d;
+margin-top:8px;
+border-radius:0 0 10px 10px;
+"></div>
+
+<p style="margin-top:10px;">
+2015
+</p>
+
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:200px;
+width:35px;
+background:#00d4ff;
+border-radius:10px 10px 0 0;
+"></div>
+
+<div style="
+height:45px;
+width:35px;
+background:#ff4d6d;
+margin-top:8px;
+border-radius:0 0 10px 10px;
+"></div>
+
+<p style="margin-top:10px;">
+2020
+</p>
+
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:180px;
+width:35px;
+background:#00d4ff;
+border-radius:10px 10px 0 0;
+"></div>
+
+<div style="
+height:60px;
+width:35px;
+background:#ff4d6d;
+margin-top:8px;
+border-radius:0 0 10px 10px;
+"></div>
+
+<p style="margin-top:10px;">
+2025
+</p>
+
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:175px;
+width:35px;
+background:#00d4ff;
+border-radius:10px 10px 0 0;
+"></div>
+
+<div style="
+height:65px;
+width:35px;
+background:#ff4d6d;
+margin-top:8px;
+border-radius:0 0 10px 10px;
+"></div>
+
+<p style="margin-top:10px;">
+2026
+</p>
+
+</div>
+
+</div>
+
+<div style="
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:25px;
+flex-wrap:wrap;
+">
+
+<div style="display:flex;align-items:center;gap:10px;">
+<div style="
+width:20px;
+height:20px;
+background:#00d4ff;
+border-radius:5px;
+"></div>
+
+<span>Agua limpia</span>
+
+</div>
+
+<div style="display:flex;align-items:center;gap:10px;">
+<div style="
+width:20px;
+height:20px;
+background:#ff4d6d;
+border-radius:5px;
+"></div>
+
+<span>Agua contaminada y falta de saneamiento</span>
+
+</div>
+
+</div>
+
+</div>
+
+<h3 style="
+margin-top:35px;
+color:#ff758f;
+">
+⚠ Problemas actuales
+</h3>
+
+<ul style="
+margin-top:20px;
+padding-left:25px;
+line-height:2;
+font-size:16px;
+">
+
+<li>🚱 Contaminación del agua</li>
+
+<li>💧 Desperdicio de recursos hídricos</li>
+
+<li>🏚 Falta de drenaje y saneamiento</li>
+
+<li>🌍 Escasez de agua potable</li>
+
+<li>🦠 Enfermedades causadas por agua contaminada</li>
+
+</ul>
+
+<h3 style="
+margin-top:35px;
+color:#00ffae;
+">
+🌱 Conclusión
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+Garantizar el acceso al agua limpia y al saneamiento es
+fundamental para mejorar la salud, prevenir enfermedades
+y proteger el medio ambiente.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+Las matemáticas, especialmente la geometría y la
+trigonometría, permiten diseñar sistemas eficientes
+para almacenar y distribuir el agua de forma responsable.
+
+</p>
+
+<hr style="
+margin:40px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<h3 style="
+color:#00d4ff;
+">
+🧬 Biología y el ODS 6
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+El ODS 6 “Agua limpia y saneamiento” es uno de los
+objetivos más importantes porque el agua es indispensable
+para la vida de todos los seres vivos.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+Desde la biología, el agua participa en la mayoría de los
+procesos vitales del cuerpo humano, animales y plantas.
+
+</p>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:30px;
+">
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>💧 Funciones del agua</h4>
+
+<ul style="
+margin-top:15px;
+padding-left:20px;
+line-height:1.8;
+">
+
+<li>Transporta nutrientes</li>
+
+<li>Regula temperatura corporal</li>
+
+<li>Elimina desechos</li>
+
+<li>Mantiene hidratación</li>
+
+</ul>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+">
+
+<h4>🌱 Importancia en plantas</h4>
+
+<ul style="
+margin-top:15px;
+padding-left:20px;
+line-height:1.8;
+">
+
+<li>Permite la fotosíntesis</li>
+
+<li>Produce oxígeno</li>
+
+<li>Favorece el crecimiento</li>
+
+<li>Nutre ecosistemas</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<h3 style="
+margin-top:35px;
+color:#ff758f;
+">
+⚠ Problemas biológicos
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+La contaminación causada por basura, químicos y aguas
+residuales afecta gravemente a ríos, mares y lagos.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+El agua contaminada puede contener bacterias, virus,
+hongos y parásitos que provocan enfermedades como:
+
+</p>
+
+<ul style="
+margin-top:20px;
+padding-left:25px;
+line-height:2;
+font-size:16px;
+">
+
+<li>🦠 Cólera</li>
+
+<li>🤒 Hepatitis</li>
+
+<li>🚑 Diarrea</li>
+
+<li>🧫 Infecciones intestinales</li>
+
+</ul>
+
+<p style="
+margin-top:25px;
+line-height:1.9;
+font-size:16px;
+">
+
+La contaminación también afecta a peces y organismos
+acuáticos, alterando cadenas alimenticias y causando
+pérdida de biodiversidad.
+
+</p>
+
+<h3 style="
+margin-top:35px;
+color:#00ffae;
+">
+🚰 Importancia del saneamiento
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.9;
+font-size:16px;
+">
+
+El saneamiento ayuda a eliminar correctamente los desechos
+y evita la propagación de microorganismos dañinos.
+
+</p>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:25px;
+">
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+text-align:center;
+">
+
+<h4>🚿 Higiene</h4>
+
+<p style="margin-top:10px;">
+Lavarse las manos y mantener limpieza previene infecciones.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+text-align:center;
+">
+
+<h4>🏗 Drenaje</h4>
+
+<p style="margin-top:10px;">
+Los sistemas de drenaje ayudan a proteger la salud pública.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+text-align:center;
+">
+
+<h4>💧 Tratamiento</h4>
+
+<p style="margin-top:10px;">
+El tratamiento del agua reduce contaminación y enfermedades.
+</p>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:35px;
+font-size:18px;
+font-weight:bold;
+color:#00d4ff;
+line-height:1.8;
+">
+
+Cuidar el agua significa proteger la salud, los ecosistemas
+y la vida de futuras generaciones.
+
+</p>
+
+`],
+7:["ODS 7: Energía asequible y no contaminante",`
+
+<h2 style="color:#ffd166;">
+⚡ ODS 7: Energía asequible y no contaminante
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 7 busca garantizar el acceso
+a una energía asequible, segura, sostenible y moderna para todas
+las personas. La energía es fundamental para el desarrollo de las
+sociedades porque permite el funcionamiento de hogares, escuelas,
+hospitales, industrias y medios de transporte.
+</p>
+
+<p>
+Actualmente, millones de personas todavía no tienen acceso a
+electricidad o dependen de combustibles contaminantes como el
+carbón y la leña, lo que provoca contaminación y enfermedades.
+Por ello, el ODS 7 promueve el uso de energías renovables como
+la solar, eólica e hidráulica.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Uso de energías renovables en el mundo
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Datos estimados del porcentaje mundial de energía renovable
+</p>
+
+<div style="
+margin-top:30px;
+display:flex;
+justify-content:space-around;
+align-items:flex-end;
+height:260px;
+gap:15px;
+flex-wrap:wrap;
+">
+
+<div style="text-align:center;">
+<div style="
+height:80px;
+width:60px;
+background:#ff6b6b;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,107,107,0.6);
+"></div>
+<p>2010<br>10%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:110px;
+width:60px;
+background:#ff9f43;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,159,67,0.6);
+"></div>
+<p>2014<br>15%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:150px;
+width:60px;
+background:#ffd166;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,209,102,0.6);
+"></div>
+<p>2018<br>22%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:190px;
+width:60px;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.6);
+"></div>
+<p>2022<br>28%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:220px;
+width:60px;
+background:#118ab2;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(17,138,178,0.6);
+"></div>
+<p>2025<br>35%</p>
+</div>
+
+</div>
+
+<div style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+font-size:14px;
+">
+
+<span style="color:#ff6b6b;">■ 2010</span>
+
+<span style="color:#ff9f43;">■ 2014</span>
+
+<span style="color:#ffd166;">■ 2018</span>
+
+<span style="color:#06d6a0;">■ 2022</span>
+
+<span style="color:#118ab2;">■ 2025</span>
+
+</div>
+
+<p>
+La gráfica muestra un aumento progresivo del uso de energías
+renovables en el mundo. Esto demuestra que cada vez más países
+buscan reducir la contaminación y utilizar fuentes de energía
+más limpias y sostenibles.
+</p>
+
+<h3 style="margin-top:25px;">
+📐 Relación con Geometría y Trigonometría
+</h3>
+
+<p>
+La geometría y la trigonometría tienen una relación importante
+con el ODS 7 porque permiten diseñar sistemas de energía más
+eficientes. Por ejemplo, los paneles solares necesitan calcular
+ángulos de inclinación para aprovechar mejor la luz solar.
+</p>
+
+<p>
+También se utilizan cálculos trigonométricos para construir
+torres eólicas, medir distancias, calcular alturas y analizar
+la dirección del viento para producir energía eléctrica.
+</p>
+
+<p>
+Gracias a los modelos matemáticos y gráficas es posible estudiar
+el crecimiento del uso de energías renovables y realizar
+predicciones para el futuro.
+</p>
+
+<h3 style="margin-top:25px;">
+🧬 Impacto biológico
+</h3>
+
+<p>
+El uso excesivo de combustibles fósiles provoca contaminación
+del aire y aumenta enfermedades respiratorias y cardiovasculares.
+Además, el calentamiento global afecta ecosistemas completos,
+provocando sequías, incendios y pérdida de biodiversidad.
+</p>
+
+<p>
+La contaminación también afecta la salud de millones de personas,
+especialmente niños y adultos mayores, quienes son más vulnerables
+a los cambios ambientales y a la mala calidad del aire.
+</p>
+
+<h3 style="margin-top:25px;">
+🌱 Soluciones sustentables
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>Utilizar energía solar y eólica</li>
+
+<li>Reducir el consumo excesivo de electricidad</li>
+
+<li>Promover focos y aparatos ahorradores</li>
+
+<li>Disminuir el uso de combustibles fósiles</li>
+
+<li>Invertir en tecnologías limpias</li>
+
+<li>Crear ciudades más sostenibles</li>
+
+</ul>
+
+<p>
+El uso de energías renovables ayuda a disminuir la contaminación,
+proteger el medio ambiente y mejorar la calidad de vida de las
+personas.
+</p>
+
+<h3 style="
+margin-top:30px;
+color:#00d4ff;
+">
+🌎 Importancia del ODS 7
+</h3>
+
+<p>
+Garantizar energía limpia y accesible es fundamental para el
+desarrollo sostenible porque permite mejorar la economía, la
+educación, la salud y la tecnología.
+</p>
+
+<p>
+Además, ayuda a combatir el cambio climático y protege los
+recursos naturales para las futuras generaciones.
+</p>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#ffd166;
+">
+La energía limpia representa una de las soluciones más importantes
+para construir un planeta más saludable y sostenible.
+</p>
+
+`],
+8:["ODS 8: Trabajo decente y crecimiento económico",`
+
+<h2 style="color:#06d6a0;">
+💼 ODS 8: Trabajo decente y crecimiento económico
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 8 busca promover el crecimiento
+económico sostenible, el empleo digno y oportunidades laborales
+para todas las personas. Este objetivo es importante porque el
+trabajo permite mejorar la calidad de vida y reducir la pobreza.
+</p>
+
+<p>
+Sin embargo, millones de personas todavía enfrentan desempleo,
+trabajos mal pagados, explotación laboral y falta de derechos
+laborales. Muchos jóvenes también tienen dificultades para
+encontrar empleo estable y seguro.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Crecimiento del empleo formal
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Porcentaje estimado de empleo formal en diferentes años
+</p>
+
+<div style="
+margin-top:30px;
+display:flex;
+justify-content:space-around;
+align-items:flex-end;
+height:260px;
+gap:15px;
+flex-wrap:wrap;
+">
+
+<div style="text-align:center;">
+<div style="
+height:90px;
+width:60px;
+background:#ff6b6b;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,107,107,0.6);
+"></div>
+<p>2012<br>18%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:120px;
+width:60px;
+background:#ff9f43;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,159,67,0.6);
+"></div>
+<p>2015<br>25%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:160px;
+width:60px;
+background:#ffd166;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,209,102,0.6);
+"></div>
+<p>2018<br>33%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:190px;
+width:60px;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.6);
+"></div>
+<p>2021<br>40%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:220px;
+width:60px;
+background:#118ab2;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(17,138,178,0.6);
+"></div>
+<p>2025<br>48%</p>
+</div>
+
+</div>
+
+<div style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+font-size:14px;
+">
+
+<span style="color:#ff6b6b;">■ 2012</span>
+
+<span style="color:#ff9f43;">■ 2015</span>
+
+<span style="color:#ffd166;">■ 2018</span>
+
+<span style="color:#06d6a0;">■ 2021</span>
+
+<span style="color:#118ab2;">■ 2025</span>
+
+</div>
+
+<p>
+La gráfica muestra un crecimiento gradual del empleo formal en
+los últimos años. Esto refleja que cada vez más personas tienen
+acceso a trabajos con derechos laborales y mejores condiciones.
+</p>
+
+<h3 style="margin-top:25px;">
+📐 Relación con Geometría y Trigonometría
+</h3>
+
+<p>
+La geometría y la trigonometría tienen aplicaciones importantes
+en el desarrollo económico porque ayudan en la construcción de
+edificios, carreteras, fábricas y sistemas tecnológicos.
+</p>
+
+<p>
+Gracias a los cálculos matemáticos es posible diseñar estructuras
+seguras, calcular distancias y optimizar procesos industriales.
+Estas herramientas también son utilizadas en ingeniería,
+arquitectura y producción tecnológica.
+</p>
+
+<p>
+Además, las gráficas y modelos matemáticos permiten analizar el
+crecimiento económico, estudiar porcentajes de empleo y realizar
+predicciones sobre el desarrollo laboral.
+</p>
+
+<h3 style="margin-top:25px;">
+🧬 Impacto biológico
+</h3>
+
+<p>
+La falta de empleo y los bajos ingresos afectan directamente la
+salud física y mental de las personas. Muchas familias no pueden
+acceder a una alimentación saludable, servicios médicos o vivienda
+adecuada.
+</p>
+
+<p>
+El desempleo también genera estrés, ansiedad y problemas
+emocionales. Además, en algunos lugares todavía existen trabajos
+peligrosos que afectan la salud de los trabajadores.
+</p>
+
+<p>
+La pobreza laboral puede provocar desnutrición, enfermedades y
+menor calidad de vida, especialmente en niños y adultos mayores.
+</p>
+
+<h3 style="margin-top:25px;">
+🌱 Soluciones sustentables
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>Crear empleos dignos y seguros</li>
+
+<li>Promover salarios justos</li>
+
+<li>Impulsar la educación y capacitación laboral</li>
+
+<li>Reducir el trabajo infantil</li>
+
+<li>Apoyar a pequeños negocios y emprendedores</li>
+
+<li>Invertir en innovación y tecnología</li>
+
+</ul>
+
+<p>
+Estas acciones ayudan a mejorar la economía y reducir la pobreza,
+permitiendo que más personas tengan mejores oportunidades de vida.
+</p>
+
+<h3 style="
+margin-top:30px;
+color:#00d4ff;
+">
+🌎 Importancia del ODS 8
+</h3>
+
+<p>
+El trabajo digno y el crecimiento económico son fundamentales
+para el desarrollo sostenible porque ayudan a reducir las
+desigualdades y mejorar el bienestar social.
+</p>
+
+<p>
+Cuando existen empleos seguros y oportunidades económicas,
+las personas pueden acceder a educación, salud y una mejor
+calidad de vida.
+</p>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#06d6a0;
+">
+El ODS 8 busca construir una economía más justa, sostenible y
+con oportunidades para todas las personas.
+</p>
+
+`],
+9:["ODS 9: Industria, innovación e infraestructura",`
+
+<h2 style="color:#118ab2;">
+🏗️ ODS 9: Industria, innovación e infraestructura
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 9 busca construir
+infraestructuras resilientes, promover la industrialización
+sostenible y fomentar la innovación tecnológica. Este objetivo
+es importante porque el desarrollo industrial y científico ayuda
+al crecimiento económico, la creación de empleos y la mejora de
+la calidad de vida.
+</p>
+
+<p>
+Actualmente, muchos países todavía enfrentan problemas relacionados
+con la falta de tecnología, carreteras, transporte eficiente,
+internet y acceso a innovación. Esto provoca desigualdad y limita
+el desarrollo de millones de personas.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Crecimiento de infraestructura tecnológica
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Porcentaje estimado de acceso a infraestructura tecnológica
+</p>
+
+<div style="
+margin-top:30px;
+display:flex;
+justify-content:space-around;
+align-items:flex-end;
+height:260px;
+gap:15px;
+flex-wrap:wrap;
+">
+
+<div style="text-align:center;">
+<div style="
+height:70px;
+width:60px;
+background:#ff6b6b;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,107,107,0.6);
+"></div>
+<p>2010<br>12%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:110px;
+width:60px;
+background:#ff9f43;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,159,67,0.6);
+"></div>
+<p>2014<br>20%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:150px;
+width:60px;
+background:#ffd166;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(255,209,102,0.6);
+"></div>
+<p>2018<br>30%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:190px;
+width:60px;
+background:#06d6a0;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(6,214,160,0.6);
+"></div>
+<p>2022<br>40%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:230px;
+width:60px;
+background:#118ab2;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 15px rgba(17,138,178,0.6);
+"></div>
+<p>2025<br>52%</p>
+</div>
+
+</div>
+
+<div style="
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+font-size:14px;
+">
+
+<span style="color:#ff6b6b;">■ 2010</span>
+
+<span style="color:#ff9f43;">■ 2014</span>
+
+<span style="color:#ffd166;">■ 2018</span>
+
+<span style="color:#06d6a0;">■ 2022</span>
+
+<span style="color:#118ab2;">■ 2025</span>
+
+</div>
+
+<p>
+La gráfica representa el crecimiento del acceso a infraestructura
+tecnológica e innovación en diferentes años. Se observa un aumento
+progresivo gracias al desarrollo de nuevas tecnologías y sistemas
+de comunicación.
+</p>
+
+<h3 style="margin-top:25px;">
+📐 Relación con Geometría y Trigonometría
+</h3>
+
+<p>
+La geometría y la trigonometría son fundamentales para el diseño
+de puentes, edificios, carreteras, fábricas y sistemas de
+telecomunicaciones.
+</p>
+
+<p>
+Estas ramas matemáticas permiten calcular distancias, alturas,
+ángulos y estructuras necesarias para desarrollar infraestructura
+segura y resistente.
+</p>
+
+<p>
+Además, la innovación tecnológica utiliza modelos matemáticos y
+gráficas para analizar datos, diseñar máquinas y mejorar sistemas
+industriales.
+</p>
+
+<p>
+Gracias a la trigonometría es posible construir antenas,
+satélites, redes eléctricas y sistemas modernos de transporte.
+</p>
+
+<h3 style="margin-top:25px;">
+🧬 Impacto biológico
+</h3>
+
+<p>
+El crecimiento industrial puede generar impactos biológicos y
+ambientales importantes cuando no existe un desarrollo sostenible.
+La contaminación del aire, agua y suelo afecta la salud humana y
+los ecosistemas.
+</p>
+
+<p>
+Las emisiones contaminantes producidas por fábricas y vehículos
+pueden provocar enfermedades respiratorias y cardiovasculares.
+Además, la destrucción de hábitats naturales reduce la
+biodiversidad y afecta a muchas especies.
+</p>
+
+<p>
+Sin embargo, la innovación tecnológica también puede ayudar a
+crear energías limpias, tratamientos médicos y sistemas más
+eficientes para proteger el medio ambiente.
+</p>
+
+<h3 style="margin-top:25px;">
+🌱 Soluciones sustentables
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>Promover industrias sostenibles</li>
+
+<li>Invertir en tecnología limpia</li>
+
+<li>Reducir emisiones contaminantes</li>
+
+<li>Mejorar carreteras y transporte público</li>
+
+<li>Fomentar la investigación científica</li>
+
+<li>Crear infraestructura resistente y segura</li>
+
+</ul>
+
+<p>
+Estas acciones ayudan a impulsar el desarrollo económico sin
+dañar el medio ambiente ni afectar la salud de las personas.
+</p>
+
+<h3 style="
+margin-top:30px;
+color:#00d4ff;
+">
+🌎 Importancia del ODS 9
+</h3>
+
+<p>
+La innovación y la infraestructura son esenciales para el
+progreso de las sociedades porque permiten mejorar la educación,
+la comunicación, el transporte y la economía.
+</p>
+
+<p>
+Además, ayudan a crear nuevas oportunidades de empleo y facilitan
+el desarrollo tecnológico en todo el mundo.
+</p>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#118ab2;
+">
+El ODS 9 busca construir un futuro moderno, tecnológico y
+sostenible para todas las personas.
+</p>
+
+`],
+10:["ODS 10: Reducción de las desigualdades",`
+
+<h2 style="color:#dd1367;">
+ODS 10: Reducción de las desigualdades
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 10 busca reducir las desigualdades
+económicas, sociales y de oportunidades entre las personas y los países.
+Actualmente millones de personas continúan viviendo en pobreza y con
+acceso limitado a servicios básicos como salud, educación y empleo.
+</p>
+
+<p>
+La desigualdad afecta directamente la calidad de vida y provoca que
+muchas personas no tengan las mismas oportunidades para desarrollarse.
+Además, también impacta el medio ambiente y el desarrollo sostenible.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Factores para reducir las desigualdades
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+Porcentaje aproximado de impacto social
+</p>
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:space-around;
+gap:15px;
+height:280px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
+margin-top:25px;
+">
+
+<div style="text-align:center;">
+<div style="
+height:230px;
+width:60px;
+background:#ff006e;
+border-radius:10px 10px 0 0;
+box-shadow:0 0 20px rgba(255,0,110,0.6);
+"></div>
+<p>Educación</p>
+<p>85%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:190px;
+width:60px;
+background:#ff4d6d;
+border-radius:10px 10px 0 0;
+"></div>
+<p>Salud</p>
+<p>70%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:160px;
+width:60px;
+background:#8338ec;
+border-radius:10px 10px 0 0;
+"></div>
+<p>Empleo</p>
+<p>60%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:145px;
+width:60px;
+background:#3a86ff;
+border-radius:10px 10px 0 0;
+"></div>
+<p>Ingreso digno</p>
+<p>55%</p>
+</div>
+
+<div style="text-align:center;">
+<div style="
+height:205px;
+width:60px;
+background:#06d6a0;
+border-radius:10px 10px 0 0;
+"></div>
+<p>Inclusión social</p>
+<p>75%</p>
+</div>
+
+</div>
+
+<p style="margin-top:25px;">
+La gráfica muestra que la educación es uno de los factores más importantes
+para disminuir las desigualdades, ya que brinda mayores oportunidades
+de desarrollo y empleo. También destacan la inclusión social y el acceso
+a la salud como elementos fundamentales para mejorar la calidad de vida.
+</p>
+<p>
+La educación presenta el porcentaje más alto con 85%,
+lo que demuestra que es una de las herramientas más importantes
+para generar oportunidades.
+</p>
+
+<p>
+La inclusión social tiene 75% y la salud 70%, ya que ambas
+permiten mejorar la calidad de vida y participación social.
+</p>
+
+<p>
+Por otro lado, el empleo digno y el ingreso económico muestran
+porcentajes menores, reflejando que aún existen dificultades
+para alcanzar igualdad económica.
+</p>
+
+<h3 style="margin-top:30px;">
+🧬 Impacto biológico de la desigualdad
+</h3>
+
+<p>
+La desigualdad afecta directamente la salud física y mental de las
+personas. Muchas familias no tienen acceso suficiente a alimentación,
+agua potable, hospitales o medicamentos, provocando enfermedades,
+desnutrición y problemas emocionales.
+</p>
+
+<p>
+Los niños y jóvenes son de los más afectados, ya que la falta de
+educación y servicios básicos limita su desarrollo físico, intelectual
+y social.
+</p>
+
+<p>
+Además, las personas que viven en pobreza suelen experimentar mayores
+niveles de estrés, ansiedad y problemas de salud relacionados con
+condiciones de vida difíciles.
+</p>
+
+<h3 style="margin-top:30px;">
+🌎 Impacto ambiental
+</h3>
+
+<p>
+La desigualdad también afecta al medio ambiente. En muchas regiones,
+las personas deben explotar excesivamente los recursos naturales para
+sobrevivir, provocando contaminación, deforestación y pérdida de
+biodiversidad.
+</p>
+
+<p>
+Mientras tanto, otros sectores mantienen niveles de consumo excesivo
+de energía y productos, generando más contaminación y desperdicio.
+</p>
+
+<p>
+Esto demuestra que la desigualdad social también contribuye al cambio
+climático y a los problemas ambientales del planeta.
+</p>
+
+<h3 style="margin-top:30px;">
+🦠 Impacto de la pandemia
+</h3>
+
+<p>
+La pandemia del COVID-19 aumentó aún más las desigualdades en el mundo.
+Millones de personas perdieron su empleo y muchas no tuvieron acceso
+a hospitales, vacunas o servicios médicos.
+</p>
+
+<p>
+Los países con menos recursos enfrentaron más dificultades para
+recuperarse, mientras que las regiones más desarrolladas pudieron
+avanzar más rápidamente.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para disminuir las desigualdades es necesario mejorar el acceso a la
+educación, garantizar empleos dignos y promover salarios justos.
+</p>
+
+<p>
+También es importante fortalecer los sistemas de salud, apoyar a las
+comunidades vulnerables y garantizar igualdad de oportunidades para
+todas las personas.
+</p>
+
+<p>
+El uso de energías limpias, el consumo responsable y el cuidado del
+medio ambiente también ayudan a construir una sociedad más sostenible
+y equitativa.
+</p>
+
+<p>
+Los gobiernos, empresas y ciudadanos pueden colaborar creando
+programas sociales, reduciendo la discriminación y promoviendo la
+inclusión social.
+</p>
+
+<p style="
+margin-top:25px;
+font-weight:bold;
+color:#dd1367;
+font-size:18px;
+">
+Reducir las desigualdades es fundamental para construir un mundo
+más justo, saludable y sostenible para las futuras generaciones.
+</p>
+
+`],
+11:["ODS 11: Ciudades y comunidades sostenibles",`
+
+<h2 style="color:#90be6d;">
+🏙️ ODS 11: Ciudades y comunidades sostenibles
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 11 busca lograr que
+las ciudades y comunidades sean más seguras, inclusivas,
+resilientes y sostenibles para todas las personas.
+</p>
+
+<p>
+Actualmente la mayoría de la población vive en zonas urbanas
+y se estima que para el año 2030 aumente considerablemente.
+Por ello, es necesario mejorar la planificación urbana,
+el transporte, la vivienda y el cuidado del medio ambiente.
+</p>
+
+<p>
+Uno de los principales problemas es el crecimiento acelerado
+y desordenado de las ciudades, ya que millones de personas
+viven en zonas marginadas con pocos servicios básicos.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Elementos importantes para ciudades sostenibles
+</h3>
+
+<div style="
+margin-top:30px;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-wrap:wrap;
+gap:25px;
+">
+
+<div style="
+width:220px;
+height:220px;
+border-radius:50%;
+background:conic-gradient(
+#00b4ff 0% 30%,
+#06d6a0 30% 50%,
+#ffd166 50% 65%,
+#90be6d 65% 85%,
+#ff7b72 85% 100%
+);
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 0 30px rgba(144,190,109,0.5);
+">
+
+<div style="
+width:110px;
+height:110px;
+background:#111827;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-weight:bold;
+font-size:18px;
+color:white;
+padding:10px;
+">
+ODS 11
+</div>
+
+</div>
+
+<div style="
+display:flex;
+flex-direction:column;
+gap:14px;
+font-size:16px;
+">
+
+<div><span style="color:#00b4ff;">⬤</span> Transporte público — 30%</div>
+
+<div><span style="color:#06d6a0;">⬤</span> Áreas verdes — 20%</div>
+
+<div><span style="color:#90be6d;">⬤</span> Energía limpia — 20%</div>
+
+<div><span style="color:#ffd166;">⬤</span> Reciclaje — 15%</div>
+
+<div><span style="color:#ff7b72;">⬤</span> Agua potable — 15%</div>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:20px;
+font-size:15px;
+opacity:0.9;
+">
+La gráfica representa algunos elementos fundamentales para
+crear ciudades sostenibles. El transporte público y las áreas
+verdes ayudan a reducir la contaminación y mejorar la calidad
+de vida de las personas.
+</p>
+
+<h3 style="margin-top:30px;">
+📐 Relación con geometría y trigonometría
+</h3>
+
+<p>
+La geometría y la trigonometría ayudan a diseñar ciudades
+más organizadas y seguras. Estas matemáticas permiten
+calcular distancias, alturas, ángulos y estructuras
+utilizadas en edificios, carreteras y sistemas urbanos.
+</p>
+
+<p>
+Gracias a estos cálculos es posible construir viviendas
+más resistentes, mejorar sistemas de transporte y crear
+espacios públicos eficientes y sostenibles.
+</p>
+
+<p>
+También ayudan en el diseño de puentes, drenajes,
+redes eléctricas y sistemas de distribución de agua.
+</p>
+
+<p>
+La planificación urbana requiere modelos matemáticos para
+organizar mejor las ciudades y aprovechar los recursos
+de forma responsable.
+</p>
+
+<h3 style="margin-top:30px;">
+🌆 Problemas urbanos actuales
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.9;
+">
+
+<li>Crecimiento desordenado de las ciudades</li>
+
+<li>Contaminación ambiental</li>
+
+<li>Falta de viviendas dignas</li>
+
+<li>Tráfico y transporte inseguro</li>
+
+<li>Escasez de áreas verdes</li>
+
+<li>Problemas de agua potable y drenaje</li>
+
+<li>Inseguridad en comunidades urbanas</li>
+
+<li>Sobrepoblación urbana</li>
+
+<li>Acumulación de residuos y basura</li>
+
+</ul>
+
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<h3 style="color:#06d6a0;">
+🧬 Impactos biológicos
+</h3>
+
+<p>
+El crecimiento descontrolado de las ciudades produce
+impactos biológicos y ambientales que provocan la
+destrucción de ecosistemas, pérdida de biodiversidad
+y reducción de áreas verdes.
+</p>
+
+<p>
+La contaminación del aire, agua y suelo afecta tanto
+a los seres humanos como a especies animales y vegetales.
+Además, el aumento de vehículos y actividades industriales
+incrementa la emisión de gases de efecto invernadero,
+contribuyendo al cambio climático y al deterioro de la
+salud pública.
+</p>
+
+<p>
+Otro problema importante es la acumulación de residuos
+y el uso excesivo de recursos naturales, lo que altera
+el equilibrio ambiental y afecta los ciclos naturales.
+</p>
+
+<p>
+También existen riesgos biológicos derivados de la
+sobrepoblación urbana, como la propagación de enfermedades
+relacionadas con la contaminación y la falta de servicios
+de salud adecuados.
+</p>
+
+<p>
+Muchas áreas naturales son afectadas por la tala de árboles,
+la sobreexplotación minera y pesquera, así como por el mal
+manejo de desechos que dañan ecosistemas completos.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para reducir estos impactos, el ODS 11 propone soluciones
+sustentables enfocadas en el desarrollo urbano responsable.
+</p>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.9;
+">
+
+<li>Uso de energías renovables como paneles solares</li>
+
+<li>Disminución del consumo eléctrico</li>
+
+<li>Creación de más áreas verdes y azoteas verdes</li>
+
+<li>Fortalecimiento del transporte público</li>
+
+<li>Uso de bicicletas y movilidad no contaminante</li>
+
+<li>Reciclaje y manejo adecuado de residuos</li>
+
+<li>Construcciones sostenibles que ahorren agua y energía</li>
+
+</ul>
+
+<p>
+Estas medidas ayudan a proteger el medio ambiente,
+conservar la biodiversidad y mejorar la calidad de vida
+de las personas.
+</p>
+
+<p>
+Además, promueven ciudades más saludables, seguras
+y sostenibles para las futuras generaciones.
+</p>
+
+<h3 style="margin-top:30px;">
+🌍 Importancia del ODS 11
+</h3>
+
+<p>
+El ODS 11 busca mejorar la calidad de vida de millones
+de personas y reducir problemas como la contaminación,
+el tráfico y la desigualdad urbana.
+</p>
+
+<p>
+Las ciudades sostenibles ayudan a proteger el medio
+ambiente y garantizan espacios más seguros para
+las futuras generaciones.
+</p>
+
+<p style="
+margin-top:25px;
+font-weight:bold;
+color:#90be6d;
+">
+Construir ciudades sostenibles es responsabilidad de todos.
+Cuidar nuestras comunidades permite crear un futuro
+más seguro, limpio y saludable.
+</p>
+
+
+`
+],
+12:["ODS 12: Producción y consumo responsables",`
+
+<h2 style="color:#f4a261;">
+ODS 12: Producción y consumo responsables
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 12 busca garantizar modelos
+de consumo y producción sostenibles para reducir el impacto
+ambiental causado por las actividades humanas.
+</p>
+
+<p>
+Actualmente, el crecimiento industrial, el consumo excesivo y
+la generación de residuos han provocado contaminación,
+desperdicio de recursos naturales y daños graves al medio ambiente.
+</p>
+
+<p>
+Este objetivo promueve el reciclaje, la reutilización de materiales,
+la reducción de residuos y el uso responsable de recursos como
+agua, energía y alimentos.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Consumo responsable y reciclaje
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Datos representativos sobre sostenibilidad y consumo mundial
+</p>
+
+<div style="margin-top:30px;">
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:20px;
+height:260px;
+margin-top:20px;
+">
+
+<div style="text-align:center;">
+
+<div style="
+width:80px;
+height:85%;
+background:#f4a261;
+border-radius:12px 12px 0 0;
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+box-shadow:0 0 15px rgba(244,162,97,0.5);
+">
+85%
+</div>
+
+<p style="margin-top:10px;">
+Reciclaje
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:80px;
+height:70%;
+background:#e76f51;
+border-radius:12px 12px 0 0;
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+box-shadow:0 0 15px rgba(231,111,81,0.5);
+">
+70%
+</div>
+
+<p style="margin-top:10px;">
+Energía limpia
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:80px;
+height:60%;
+background:#2a9d8f;
+border-radius:12px 12px 0 0;
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+box-shadow:0 0 15px rgba(42,157,143,0.5);
+">
+60%
+</div>
+
+<p style="margin-top:10px;">
+Consumo responsable
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:80px;
+height:50%;
+background:#457b9d;
+border-radius:12px 12px 0 0;
+display:flex;
+align-items:flex-start;
+justify-content:center;
+color:white;
+font-weight:bold;
+padding-top:10px;
+box-shadow:0 0 15px rgba(69,123,157,0.5);
+">
+50%
+</div>
+
+<p style="margin-top:10px;">
+Reducción de residuos
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:25px;
+">
+La gráfica representa algunos factores importantes relacionados
+con el consumo y la producción responsable. El reciclaje presenta
+uno de los porcentajes más altos debido a su importancia para
+reducir residuos y reutilizar materiales.
+</p>
+
+<p>
+También destaca el uso de energías limpias y el consumo responsable,
+ya que ayudan a disminuir la contaminación y el desperdicio
+de recursos naturales.
+</p>
+
+<h3 style="margin-top:30px;">
+🧬 Impacto biológico
+</h3>
+
+<p>
+El consumo excesivo y la contaminación provocan daños graves
+en los ecosistemas y en la salud de los seres vivos.
+</p>
+
+<p>
+La acumulación de plásticos, residuos tóxicos y emisiones
+contaminantes afecta océanos, ríos, bosques y especies animales.
+Además, muchas enfermedades respiratorias y problemas de salud
+están relacionados con la contaminación ambiental.
+</p>
+
+<p>
+La sobreexplotación de recursos naturales también provoca
+deforestación, pérdida de biodiversidad y cambio climático.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para cumplir el ODS 12 es necesario reducir el desperdicio,
+promover el reciclaje y utilizar energías renovables.
+</p>
+
+<p>
+También es importante fomentar el consumo responsable,
+disminuir el uso de plásticos y crear tecnologías más limpias
+que reduzcan el impacto ambiental.
+</p>
+
+<p>
+La educación ambiental y la participación de la sociedad son
+fundamentales para proteger el planeta y garantizar recursos
+para las futuras generaciones.
+</p>
+
+<div style="
+margin-top:35px;
+padding:20px;
+background:rgba(244,162,97,0.1);
+border-left:5px solid #f4a261;
+border-radius:15px;
+">
+
+<p style="
+font-weight:bold;
+color:#f4a261;
+font-size:18px;
+">
+♻️ Consumir responsablemente ayuda a proteger el medio ambiente,
+reducir la contaminación y construir un futuro sostenible.
+</p>
+
+</div>
+
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<p>
+This goal encourages recycling, renewable energy and sustainable
+habits to protect ecosystems and human health.
+</p>
+
+<h3 style="margin-top:20px;">
+💡 Sustainable Actions
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>Reduce plastic waste</li>
+
+<li>Promote recycling and reuse</li>
+
+<li>Use renewable energy</li>
+
+<li>Protect ecosystems and biodiversity</li>
+
+<li>Encourage responsible consumption</li>
+
+</ul>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#00d4ff;
+">
+Responsible production and consumption are essential for a cleaner
+and healthier planet.
+</p>
+
+`],
+13:["ODS 13: Acción por el clima",`
+
+<h2 style="color:#4cc9f0;">
+ODS 13: Acción por el clima
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 13 busca combatir el cambio
+climático y sus efectos mediante acciones sostenibles que ayuden
+a proteger el planeta y mejorar la calidad de vida.
+</p>
+
+<p>
+Actualmente, el calentamiento global representa uno de los mayores
+problemas ambientales del mundo debido al aumento de gases de
+efecto invernadero provocados por actividades humanas.
+</p>
+
+<p>
+La contaminación, la deforestación y el uso excesivo de combustibles
+fósiles han provocado cambios en el clima, sequías, incendios,
+huracanes y el aumento de la temperatura global.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Incremento de la temperatura global
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Temperatura promedio global entre 2010 y 2024
+</p>
+
+<div style="margin-top:30px;">
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:15px;
+height:260px;
+margin-top:20px;
+flex-wrap:wrap;
+">
+
+<div style="text-align:center;">
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:15px;
+height:260px;
+margin-top:20px;
+flex-wrap:wrap;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
+">
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:80px;
+background:#90e0ef;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(144,224,239,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2010
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:100px;
+background:#48cae4;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(72,202,228,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2012
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:120px;
+background:#00b4d8;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(0,180,216,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2014
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:140px;
+background:#0096c7;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(0,150,199,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2016
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:170px;
+background:#0077b6;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(0,119,182,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2018
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:190px;
+background:#f77f00;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(247,127,0,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2020
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:220px;
+background:#f94144;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(249,65,68,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2022
+</p>
+
+</div>
+
+<div style="text-align:center;">
+
+<div style="
+width:55px;
+height:240px;
+background:#d00000;
+border-radius:12px 12px 0 0;
+box-shadow:0 0 12px rgba(208,0,0,0.8);
+border:2px solid #ffffff;
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2024
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:25px;
+">
+La gráfica muestra cómo la temperatura global ha aumentado
+constantemente en los últimos años debido al cambio climático
+y a la contaminación ambiental.
+</p>
+
+<p>
+El incremento de gases de efecto invernadero provoca alteraciones
+en los ecosistemas, derretimiento de glaciares y fenómenos
+naturales más intensos.
+</p>
+
+<h3 style="margin-top:30px;">
+📐 Relación con Geometría y Trigonometría
+</h3>
+
+<p>
+Las matemáticas ayudan a estudiar el cambio climático mediante
+gráficas, modelos lineales y análisis de datos ambientales.
+</p>
+
+<p>
+La trigonometría también se utiliza para diseñar paneles solares,
+medir temperaturas, analizar fenómenos atmosféricos y desarrollar
+tecnologías sostenibles.
+</p>
+
+<p>
+Gracias a los modelos matemáticos es posible interpretar
+información climática y realizar predicciones sobre el impacto
+ambiental en el futuro.
+</p>
+
+<h3 style="margin-top:30px;">
+🧬 Impacto biológico
+</h3>
+
+<p>
+El cambio climático afecta directamente a los seres vivos y a
+los ecosistemas del planeta.
+</p>
+
+<p>
+El aumento de temperatura provoca sequías, incendios forestales,
+pérdida de biodiversidad y alteraciones en los hábitats naturales.
+</p>
+
+<p>
+Muchas especies animales y vegetales están desapareciendo debido
+a la contaminación, la deforestación y el calentamiento global.
+Además, la contaminación atmosférica afecta la salud humana
+causando enfermedades respiratorias y cardiovasculares.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para combatir el cambio climático es necesario reducir la
+contaminación y promover energías renovables como la solar
+y eólica.
+</p>
+
+<p>
+También es importante disminuir el uso de combustibles fósiles,
+fomentar el reciclaje y proteger bosques, mares y ecosistemas.
+</p>
+
+<p>
+La educación ambiental y la participación de la sociedad son
+fundamentales para reducir el impacto ambiental y construir
+un futuro más sostenible.
+</p>
+
+<div style="
+margin-top:35px;
+padding:20px;
+background:rgba(76,201,240,0.1);
+border-left:5px solid #4cc9f0;
+border-radius:15px;
+">
+
+<p style="
+font-weight:bold;
+color:#4cc9f0;
+font-size:18px;
+">
+🌎 Combatir el cambio climático es responsabilidad de todos
+para proteger la vida y el futuro del planeta.
+</p>
+
+</div>
+
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<h3 style="margin-top:20px;">
+💡 Sustainable Solutions
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>Use renewable energy</li>
+
+<li>Reduce pollution and waste</li>
+
+<li>Protect forests and oceans</li>
+
+<li>Promote recycling</li>
+
+<li>Encourage environmental education</li>
+
+</ul>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#90e0ef;
+">
+Climate action is essential to protect ecosystems, biodiversity
+and human life.
+</p>
+
+`],
+14:["ODS 14: Vida submarina",`
+
+<h2 style="color:#0a97d9;">
+🌊 ODS 14: Vida submarina
+</h2>
+
+<p>
+El Objetivo 14 de la Agenda 2030 busca conservar y utilizar
+de manera sostenible los océanos, mares y recursos marinos.
+</p>
+
+<p>
+Su propósito es proteger los ecosistemas marinos mediante
+acciones como reducir la contaminación, proteger especies
+marinas y regular la pesca para evitar la sobreexplotación.
+</p>
+
+<p>
+Los océanos son fundamentales para la vida porque producen
+oxígeno, regulan el clima y proporcionan alimento a millones
+de personas.
+</p>
+
+<h3 style="margin-top:30px;">
+📊 Valores de pH de superficie (2005-2022)
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+pH máximo • pH promedio • pH mínimo
+</p>
+
+<div style="
+margin-top:35px;
+display:flex;
+align-items:flex-end;
+gap:10px;
+height:260px;
+flex-wrap:wrap;
+">
+
+<!-- 2005 -->
+
+<div style="display:flex;gap:4px;align-items:flex-end;">
+
+<div style="
+width:18px;
+height:180px;
+background:#00ffff;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:160px;
+background:#00ff88;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:140px;
+background:#ffdd00;
+border-radius:8px 8px 0 0;
+"></div>
+
+</div>
+
+<!-- 2009 -->
+
+<div style="display:flex;gap:4px;align-items:flex-end;">
+
+<div style="
+width:18px;
+height:180px;
+background:#00ffff;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:160px;
+background:#00ff88;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:140px;
+background:#ffdd00;
+border-radius:8px 8px 0 0;
+"></div>
+
+</div>
+
+<!-- 2013 -->
+
+<div style="display:flex;gap:4px;align-items:flex-end;">
+
+<div style="
+width:18px;
+height:180px;
+background:#00ffff;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:160px;
+background:#00ff88;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:140px;
+background:#ffdd00;
+border-radius:8px 8px 0 0;
+"></div>
+
+</div>
+
+<!-- 2017 -->
+
+<div style="display:flex;gap:4px;align-items:flex-end;">
+
+<div style="
+width:18px;
+height:180px;
+background:#00ffff;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:160px;
+background:#00ff88;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:140px;
+background:#ffdd00;
+border-radius:8px 8px 0 0;
+"></div>
+
+</div>
+
+<!-- 2022 -->
+
+<div style="display:flex;gap:4px;align-items:flex-end;">
+
+<div style="
+width:18px;
+height:180px;
+background:#00ffff;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:160px;
+background:#00ff88;
+border-radius:8px 8px 0 0;
+"></div>
+
+<div style="
+width:18px;
+height:140px;
+background:#ffdd00;
+border-radius:8px 8px 0 0;
+"></div>
+
+</div>
+
+</div>
+<p style="
+margin-top:30px;
+line-height:1.8;
+font-size:16px;
+">
+
+La gráfica muestra los cambios en los niveles de pH de los océanos
+entre 2005 y 2022. Los datos indican una disminución gradual del
+pH, lo que significa que los océanos se están volviendo más ácidos
+debido al aumento de dióxido de carbono en la atmósfera.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+Esto afecta a los ecosistemas marinos y a muchas especies que viven
+en ellos.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+En conclusión, la gráfica demuestra que la acidificación de los
+océanos ha aumentado constantemente en los últimos años debido al
+exceso de dióxido de carbono generado por las actividades humanas.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+Este problema afecta gravemente a los ecosistemas marinos porque
+pone en riesgo a especies como los corales, peces y otros organismos
+que dependen del equilibrio del océano para sobrevivir.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+font-weight:bold;
+color:#00d4ff;
+">
+
+Por ello, es fundamental tomar medidas para reducir la contaminación,
+cuidar los mares y promover acciones sostenibles que ayuden a
+proteger la vida submarina y el medio ambiente.
+
+</p>
+
+<div style="
+display:flex;
+gap:45px;
+margin-top:15px;
+font-size:14px;
+flex-wrap:wrap;
+">
+
+<span>2005</span>
+<span>2009</span>
+<span>2013</span>
+<span>2017</span>
+<span>2022</span>
+
+</div>
+
+<div style="
+display:flex;
+gap:20px;
+margin-top:20px;
+flex-wrap:wrap;
+font-size:14px;
+">
+
+<span style="color::#00ffff;">■ pH máximo</span>
+
+<span style="color:#00ff88;">■ pH promedio</span>
+
+<span style="color:#ffdd00;">■ pH mínimo</span>
+
+</div>
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<h3 style="color:#00d4ff;">
+🧬 Biología y Vida Submarina
+</h3>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+El Objetivo 14 de la Agenda 2030 busca proteger y conservar
+los océanos, mares y recursos marinos mediante un uso
+sostenible.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+Los océanos son fundamentales para la vida en el planeta,
+ya que producen gran parte del oxígeno que respiramos,
+regulan el clima y son hogar de miles de especies marinas.
+
+</p>
+
+<h3 style="
+margin-top:30px;
+color:#4cc9f0;
+">
+⚠ Problemas actuales
+</h3>
+
+<ul style="
+margin-top:20px;
+padding-left:25px;
+line-height:2;
+font-size:16px;
+">
+
+<li>🌡 Calentamiento global y aumento de temperatura del agua</li>
+
+<li>🗑 Contaminación por plásticos y microplásticos</li>
+
+<li>🎣 Sobrepesca y explotación excesiva</li>
+
+<li>🐠 Pérdida de biodiversidad marina</li>
+
+<li>🪸 Blanqueamiento de corales</li>
+
+</ul>
+
+<p style="
+margin-top:25px;
+line-height:1.8;
+font-size:16px;
+">
+
+Muchos animales marinos como tortugas, peces y aves
+confunden residuos plásticos con alimento, provocando
+enfermedades e incluso la muerte.
+
+</p>
+
+<p style="
+margin-top:20px;
+line-height:1.8;
+font-size:16px;
+">
+
+El aumento de la temperatura del agua altera los hábitats
+naturales y provoca migraciones, disminución de especies
+y desequilibrios ecológicos.
+
+</p>
+
+<h3 style="
+margin-top:30px;
+color:#00ffae;
+">
+🌱 Soluciones sustentables
+</h3>
+
+<div style="
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-top:25px;
+">
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+text-align:center;
+">
+
+<h4>♻ Reducir plásticos</h4>
+
+<p style="margin-top:10px;">
+Disminuir el uso de plásticos de un solo uso y fomentar
+el reciclaje.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+text-align:center;
+">
+
+<h4>🧹 Limpieza de mares</h4>
+
+<p style="margin-top:10px;">
+Realizar campañas de limpieza de playas y océanos.
+</p>
+
+</div>
+
+<div style="
+background:rgba(255,255,255,0.08);
+padding:20px;
+border-radius:18px;
+text-align:center;
+">
+
+<h4>🎣 Pesca responsable</h4>
+
+<p style="margin-top:10px;">
+Respetar límites de captura y temporadas de reproducción.
+</p>
+
+</div>
+
+</div>
+
+
+<h3 style="margin-top:30px;">
+⚠ Impacto ambiental
+</h3>
+
+<p>
+La acidificación de los océanos afecta gravemente a especies
+marinas como corales, peces y organismos que dependen del
+equilibrio químico del agua para sobrevivir.
+</p>
+
+<p>
+Además, la contaminación marina y la sobrepesca ponen en
+riesgo la biodiversidad y el equilibrio de los ecosistemas.
+</p>
+
+<p style="
+margin-top:30px;
+font-weight:bold;
+color:#0a97d9;
+">
+Proteger los océanos es fundamental para conservar la vida
+en el planeta y garantizar un futuro sostenible.
+</p>
+
+`],
+15:["ODS 15: Vida de ecosistemas terrestres",`
+
+<h2 style="color:#52b788;">
+ODS 15: Vida de ecosistemas terrestres
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 15 busca proteger,
+restaurar y promover el uso sostenible de los ecosistemas
+terrestres, así como detener la pérdida de biodiversidad
+y la destrucción de hábitats naturales.
+</p>
+
+<p>
+Actualmente, los bosques, selvas y ecosistemas enfrentan
+graves amenazas debido a la deforestación, contaminación,
+incendios forestales y explotación excesiva de recursos
+naturales.
+</p>
+
+<p>
+La pérdida de áreas verdes afecta tanto a los animales
+como a las personas, ya que los ecosistemas son fundamentales
+para mantener el equilibrio ambiental y producir oxígeno.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Deforestación y pérdida de biodiversidad
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Impacto ambiental entre 2010 y 2024
+</p>
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:18px;
+height:270px;
+margin-top:30px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
+flex-wrap:wrap;
+">
+
+<div style="text-align:center;">
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:12px;
+height:260px;
+margin-top:30px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
+flex-wrap:nowrap;
+overflow-x:auto;
+">
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:70px;
+background:#95d5b2;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2010
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:95px;
+background:#74c69d;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2012
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:120px;
+background:#52b788;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2014
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:145px;
+background:#40916c;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2016
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:170px;
+background:#2d6a4f;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2018
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:195px;
+background:#bc4749;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2020
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:220px;
+background:#d62828;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2022
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:70px;">
+
+<div style="
+width:55px;
+height:240px;
+background:#9d0208;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+">
+</div>
+
+<p style="margin-top:8px;font-size:12px;">
+2024
+</p>
+
+</div>
+
+</div>
+
+<p style="
+margin-top:25px;
+">
+La gráfica representa el aumento de la pérdida de ecosistemas
+y biodiversidad en los últimos años debido a actividades
+humanas como la tala de árboles y la contaminación.
+</p>
+
+<p>
+También refleja cómo el deterioro ambiental afecta bosques,
+selvas, animales y recursos naturales importantes para
+la vida en el planeta.
+</p>
+
+<h3 style="margin-top:30px;">
+📐 Relación con Geometría y Trigonometría
+</h3>
+
+<p>
+La geometría y la trigonometría ayudan a medir áreas
+forestales, calcular distancias y analizar terrenos para
+la conservación de ecosistemas.
+</p>
+
+<p>
+También se utilizan para diseñar proyectos ambientales,
+mapas ecológicos y sistemas sustentables relacionados con
+la protección de recursos naturales.
+</p>
+
+<p>
+Gracias a los modelos matemáticos es posible analizar
+datos ambientales y representar el impacto ecológico
+mediante gráficas y estadísticas.
+</p>
+
+<h3 style="margin-top:30px;">
+🧬 Impacto biológico
+</h3>
+
+<p>
+La destrucción de ecosistemas provoca pérdida de biodiversidad
+y afecta el equilibrio natural del planeta.
+</p>
+
+<p>
+Muchas especies animales y vegetales pierden sus hábitats
+debido a la deforestación, incendios forestales y contaminación.
+</p>
+
+<p>
+Además, la contaminación del aire, agua y suelo afecta
+la salud humana y contribuye al cambio climático.
+</p>
+
+<p>
+La pérdida de bosques reduce la producción de oxígeno
+y aumenta la concentración de dióxido de carbono en la atmósfera.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para proteger los ecosistemas terrestres es importante
+fomentar la reforestación y reducir la contaminación.
+</p>
+
+<p>
+También es necesario proteger áreas naturales, disminuir
+la tala ilegal y promover el uso responsable de recursos
+naturales.
+</p>
+
+<p>
+El reciclaje, las energías renovables y la educación ambiental
+son fundamentales para conservar la biodiversidad y proteger
+el planeta.
+</p>
+
+<div style="
+margin-top:35px;
+padding:20px;
+background:rgba(82,183,136,0.1);
+border-left:5px solid #52b788;
+border-radius:15px;
+">
+
+<p style="
+font-weight:bold;
+color:#52b788;
+font-size:18px;
+">
+🌳 Proteger los ecosistemas terrestres ayuda a conservar
+la biodiversidad y garantizar un futuro sostenible.
+</p>
+
+</div>
+
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+`],
+16:["ODS 16: Paz, justicia e instituciones sólidas",`
+
+<h2 style="color:#4361ee;">
+ODS 16: Paz, justicia e instituciones sólidas
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 16 busca promover
+sociedades pacíficas, inclusivas y justas, garantizando
+el acceso a la justicia y fortaleciendo las instituciones.
+</p>
+
+<p>
+La violencia, corrupción, inseguridad y desigualdad
+afectan a millones de personas en el mundo, limitando
+el desarrollo social y económico.
+</p>
+
+<p>
+Este objetivo también busca reducir los delitos,
+proteger los derechos humanos y fomentar una convivencia
+basada en el respeto y la paz.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Factores para fortalecer la paz y justicia
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Indicadores sociales 2015 - 2024
+</p>
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:14px;
+height:270px;
+margin-top:30px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
+overflow-x:auto;
+">
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:210px;
+background:#4361ee;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(67,97,238,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+Educación
+85%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:180px;
+background:#3a86ff;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(58,134,255,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+Justicia
+75%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:160px;
+background:#4895ef;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(72,149,239,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+Seguridad
+68%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:140px;
+background:#4cc9f0;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(76,201,240,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+Instituciones
+60%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:120px;
+background:#90e0ef;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(144,224,239,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+Igualdad
+52%
+</p>
+
+</div>
+
+</div>
+
+<p style="margin-top:25px;">
+La gráfica representa algunos factores importantes
+para construir sociedades más justas y seguras.
+</p>
+
+<p>
+La educación y el acceso a la justicia muestran
+los porcentajes más altos, ya que ayudan a reducir
+la violencia y mejorar la convivencia social.
+</p>
+
+<p>
+Sin embargo, todavía existen problemas relacionados
+con corrupción, inseguridad y desigualdad en muchos países.
+</p>
+
+<h3 style="margin-top:30px;">
+📐 Relación con Geometría y Trigonometría
+</h3>
+
+<p>
+Las matemáticas ayudan a representar estadísticas,
+analizar datos sociales y elaborar gráficas sobre
+seguridad, violencia y desarrollo humano.
+</p>
+
+<p>
+También permiten calcular tendencias y crear modelos
+que ayudan a mejorar la planificación urbana,
+la distribución de recursos y la organización social.
+</p>
+
+<p>
+Los modelos matemáticos permiten interpretar información
+y proponer soluciones relacionadas con el bienestar
+de la población.
+</p>
+
+<h3 style="margin-top:30px;">
+🧬 Impacto biológico y social
+</h3>
+
+<p>
+La violencia y la desigualdad afectan la salud física
+y emocional de las personas, provocando estrés,
+ansiedad y enfermedades relacionadas con la salud mental.
+</p>
+
+<p>
+Además, la inseguridad limita el acceso a educación,
+empleo y servicios médicos, afectando el desarrollo
+de millones de familias.
+</p>
+
+<p>
+La contaminación social y los conflictos también
+pueden provocar migración, pobreza y pérdida
+de calidad de vida.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para fortalecer la paz y la justicia es importante
+mejorar la educación y promover valores como
+el respeto y la igualdad.
+</p>
+
+<p>
+También es necesario combatir la corrupción,
+fortalecer las instituciones públicas y garantizar
+los derechos humanos.
+</p>
+
+<p>
+La participación ciudadana y el trabajo conjunto
+entre gobiernos y sociedad pueden ayudar a construir
+comunidades más seguras y sostenibles.
+</p>
+
+<div style="
+margin-top:35px;
+padding:20px;
+background:rgba(67,97,238,0.1);
+border-left:5px solid #4361ee;
+border-radius:15px;
+">
+
+<p style="
+font-weight:bold;
+color:#4361ee;
+font-size:18px;
+">
+⚖️ La paz, la justicia y la igualdad son fundamentales
+para construir sociedades sostenibles y seguras.
+</p>
+
+</div>
+
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+
+<h3 style="margin-top:20px;">
+💡 Sustainable Solutions
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>Promote education and equality</li>
+
+<li>Reduce violence and corruption</li>
+
+<li>Strengthen public institutions</li>
+
+<li>Protect human rights</li>
+
+<li>Encourage social participation</li>
+
+</ul>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#4cc9f0;
+">
+Peace and justice are essential for a sustainable future.
+</p>
+
+`],
+17:["ODS 17: Alianzas para lograr los objetivos",`
+
+<h2 style="color:#ff9f1c;">
+ODS 17: Alianzas para lograr los objetivos
+</h2>
+
+<p>
+El Objetivo de Desarrollo Sostenible 17 busca fortalecer
+las alianzas mundiales para alcanzar todos los objetivos
+de la Agenda 2030.
+</p>
+
+<p>
+Este objetivo promueve la cooperación entre países,
+gobiernos, empresas, escuelas y organizaciones para
+resolver problemas globales como la pobreza,
+el cambio climático y la desigualdad.
+</p>
+
+<p>
+Las alianzas internacionales permiten compartir
+tecnología, recursos, educación y conocimientos
+para construir un mundo más sostenible.
+</p>
+
+<h3 style="margin-top:25px;">
+📊 Cooperación internacional y desarrollo sostenible
+</h3>
+
+<p style="
+margin-top:10px;
+font-size:15px;
+opacity:0.8;
+">
+📅 Participación global 2010 - 2024
+</p>
+
+<div style="
+display:flex;
+align-items:flex-end;
+justify-content:center;
+gap:14px;
+height:280px;
+margin-top:30px;
+background:rgba(255,255,255,0.05);
+padding:20px;
+border-radius:20px;
+overflow-x:auto;
+">
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:90px;
+background:#ffd166;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(255,209,102,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2010
+35%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:120px;
+background:#ffb703;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(255,183,3,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2012
+45%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:145px;
+background:#fb8500;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(251,133,0,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2014
+55%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:170px;
+background:#f77f00;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(247,127,0,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2016
+65%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:195px;
+background:#f48c06;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(244,140,6,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2018
+72%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:215px;
+background:#e85d04;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(232,93,4,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2020
+80%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:235px;
+background:#dc2f02;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(220,47,2,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2022
+88%
+</p>
+
+</div>
+
+<div style="text-align:center;min-width:80px;">
+
+<div style="
+width:60px;
+height:250px;
+background:#9d0208;
+border-radius:12px 12px 0 0;
+border:2px solid white;
+margin:auto;
+box-shadow:0 0 12px rgba(157,2,8,0.8);
+">
+</div>
+
+<p style="margin-top:10px;font-size:13px;">
+2024
+95%
+</p>
+
+</div>
+
+</div>
+
+<p style="margin-top:25px;">
+La gráfica representa el crecimiento de la cooperación
+internacional y las alianzas globales para cumplir
+los Objetivos de Desarrollo Sostenible.
+</p>
+
+<p>
+Con el paso de los años, más países y organizaciones
+han participado en proyectos relacionados con educación,
+salud, tecnología y medio ambiente.
+</p>
+
+<p>
+Esto demuestra la importancia del trabajo conjunto
+para enfrentar problemas que afectan a todo el planeta.
+</p>
+
+<h3 style="margin-top:30px;">
+📐 Relación con Geometría y Trigonometría
+</h3>
+
+<p>
+Las matemáticas ayudan a representar estadísticas,
+analizar datos internacionales y crear modelos
+relacionados con el desarrollo sostenible.
+</p>
+
+<p>
+La geometría y la trigonometría también permiten
+diseñar proyectos tecnológicos y sistemas sostenibles
+utilizados en diferentes países.
+</p>
+
+<p>
+Gracias a los modelos matemáticos es posible
+interpretar tendencias y realizar predicciones
+sobre el crecimiento económico y social.
+</p>
+
+<h3 style="margin-top:30px;">
+🧬 Impacto biológico y social
+</h3>
+
+<p>
+Las alianzas internacionales ayudan a mejorar
+la salud, la alimentación y la calidad de vida
+de millones de personas.
+</p>
+
+<p>
+También permiten desarrollar campañas de vacunación,
+investigaciones científicas y proyectos ambientales
+para proteger la biodiversidad y reducir enfermedades.
+</p>
+
+<p>
+Además, el trabajo conjunto entre países ayuda
+a enfrentar problemas como pandemias, pobreza,
+contaminación y cambio climático.
+</p>
+
+<h3 style="margin-top:30px;">
+🌱 Soluciones sustentables
+</h3>
+
+<p>
+Para lograr los Objetivos de Desarrollo Sostenible
+es importante fortalecer la cooperación internacional
+y compartir recursos tecnológicos y científicos.
+</p>
+
+<p>
+También es necesario apoyar la educación,
+la innovación y las energías limpias para
+proteger el planeta y mejorar la calidad de vida.
+</p>
+
+<p>
+Las alianzas entre gobiernos, empresas,
+escuelas y sociedad son fundamentales para
+construir un futuro sostenible.
+</p>
+
+<div style="
+margin-top:35px;
+padding:20px;
+background:rgba(255,159,28,0.1);
+border-left:5px solid #ff9f1c;
+border-radius:15px;
+">
+
+<p style="
+font-weight:bold;
+color:#ff9f1c;
+font-size:18px;
+">
+🤝 Las alianzas globales son esenciales para alcanzar
+un desarrollo sostenible y un futuro mejor para todos.
+</p>
+
+</div>
+
+<hr style="
+margin:35px 0;
+border:1px solid rgba(255,255,255,0.2);
+">
+
+<h3 style="margin-top:20px;">
+💡 Sustainable Solutions
+</h3>
+
+<ul style="
+margin-top:15px;
+padding-left:25px;
+line-height:1.8;
+">
+
+<li>Promote global cooperation</li>
+
+<li>Support education and innovation</li>
+
+<li>Share technology and resources</li>
+
+<li>Protect the environment</li>
+
+<li>Strengthen international partnerships</li>
+
+</ul>
+
+<p style="
+margin-top:20px;
+font-weight:bold;
+color:#ffd166;
+">
+Global partnerships are essential for a sustainable future.
+</p>
+
+`],
+};
+
+function openODS(num){
+
+document.getElementById("modal").style.display="flex";
+
+document.getElementById("titulo").innerText=odsInfo[num][0];
+
+document.getElementById("texto").innerHTML=
+odsInfo[num][1];
+
+}
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+function showAnswer(){
+
+document.getElementById("answer").innerHTML=
+"Existen 17 Objetivos de Desarrollo Sostenible 🌍";
+
+}
+
+/* PARTICULAS */
+
+for(let i=0;i<50;i++){
+
+const particle=document.createElement('div');
+
+particle.classList.add('particle');
+
+particle.style.left=Math.random()*100+'vw';
+
+particle.style.animationDuration=(Math.random()*10+10)+'s';
+
+particle.style.opacity=Math.random();
+
+particle.style.width=particle.style.height=
+(Math.random()*8+4)+'px';
+
+document.getElementById('particles').appendChild(particle);
+
+}
+
+/* CONTADORES */
+
+const counters=document.querySelectorAll('.counter');
+
+counters.forEach(counter=>{
+
+counter.innerText='0';
+
+const updateCounter=()=>{
+
+const target=+counter.getAttribute('data-target');
+
+const c=+counter.innerText;
+
+const increment=target/100;
+
+if(c<target){
+
+counter.innerText=`${Math.ceil(c+increment)}`;
+
+setTimeout(updateCounter,30);
+
+}else{
+
+counter.innerText=target;
+
+}
+
+};
+
+updateCounter();
+
+});
+/* ===================== QUIZ COMPLETO ===================== */
+
+let score=0;
+let timeLeft=15;
+let timer;
+
+const quizData = [
+{
+question:"¿Qué significa ODS?",
+answers:[
+"Objetivos de Desarrollo Sostenible",
+"Organización de Desarrollo Social",
+"Objetivos de Desarrollo Social",
+"Organización de Desarrollo Sustentable"
+],
+correct:"Objetivos de Desarrollo Sostenible"
+},
+
+{
+question:"¿Cuál es la fecha meta de los ODS?",
+answers:["2030","2025","2040","2050"],
+correct:"2030"
+},
+
+{
+question:"¿Qué ODS busca poner fin a la pobreza?",
+answers:["ODS 1","ODS 5","ODS 8","ODS 10"],
+correct:"ODS 1"
+},
+
+{
+question:"¿Qué ODS busca Hambre Cero?",
+answers:["ODS 2","ODS 4","ODS 6","ODS 12"],
+correct:"ODS 2"
+},
+
+{
+question:"¿Qué ODS promueve la salud y bienestar?",
+answers:["ODS 3","ODS 7","ODS 11","ODS 14"],
+correct:"ODS 3"
+},
+
+{
+question:"¿Qué ODS promueve trabajo decente y crecimiento económico?",
+answers:["ODS 8","ODS 6","ODS 2","ODS 15"],
+correct:"ODS 8"
+},
+
+{
+question:"¿Qué ODS impulsa industria e innovación?",
+answers:["ODS 9","ODS 1","ODS 16","ODS 4"],
+correct:"ODS 9"
+},
+
+{
+question:"¿Qué ODS promueve consumo responsable?",
+answers:["ODS 12","ODS 3","ODS 5","ODS 7"],
+correct:"ODS 12"
+},
+
+{
+question:"¿Qué ODS protege la vida de ecosistemas terrestres?",
+answers:["ODS 15","ODS 14","ODS 6","ODS 13"],
+correct:"ODS 15"
+},
+
+{
+question:"¿Qué ODS promueve alianzas para lograr los objetivos?",
+answers:["ODS 17","ODS 9","ODS 10","ODS 11"],
+correct:"ODS 17"
+},
+
+{
+question:"¿Cuántos países aprobaron la Agenda 2030?",
+answers:["193","100","150","250"],
+correct:"193"
+},
+
+{
+question:"¿Cuál es uno de los principales objetivos de los ODS?",
+answers:[
+"Mejorar la calidad de vida",
+"Aumentar impuestos",
+"Reducir escuelas",
+"Crear más fronteras"
+],
+correct:"Mejorar la calidad de vida"
+},
+
+{
+question:"¿Qué ODS se relaciona con ciudades sostenibles?",
+answers:["ODS 11","ODS 4","ODS 8","ODS 15"],
+correct:"ODS 11"
+},
+
+{
+question:"¿Qué ODS protege océanos y mares?",
+answers:["ODS 14","ODS 2","ODS 10","ODS 17"],
+correct:"ODS 14"
+},
+
+{
+question:"¿Qué ODS busca acceso universal a agua potable?",
+answers:["ODS 6","ODS 3","ODS 13","ODS 5"],
+correct:"ODS 6"
+},
+
+{
+question:"¿Qué ODS busca reducir las desigualdades?",
+answers:["ODS 10","ODS 12","ODS 1","ODS 7"],
+correct:"ODS 10"
+},
+
+{
+question:"¿Qué ODS promueve energía asequible y no contaminante?",
+answers:["ODS 7","ODS 8","ODS 11","ODS 16"],
+correct:"ODS 7"
+},
+
+{
+question:"¿Cuál es un ejemplo de acción sostenible?",
+answers:[
+"Reciclar residuos",
+"Contaminar ríos",
+"Desperdiciar agua",
+"Quemar basura"
+],
+correct:"Reciclar residuos"
+},
+
+{
+question:"¿Qué institución creó los ODS?",
+answers:["ONU","UNICEF","NASA","FIFA"],
+correct:"ONU"
+},
+
+{
+question:"¿Por qué son importantes los ODS?",
+answers:[
+"Porque ayudan al desarrollo sostenible",
+"Porque aumentan la contaminación",
+"Porque eliminan la educación",
+"Porque reducen la salud pública"
+],
+correct:"Porque ayudan al desarrollo sostenible"
+}
+
+];
+let currentQuestion = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
+function startQuiz(){
+
+currentQuestion = 0;
+correctAnswers = 0;
+wrongAnswers = 0;
+
+showQuestion();
+
+}
+
+function showQuestion(){
+
+clearInterval(timer);
+
+if(currentQuestion >= quizData.length){
+
+document.getElementById("question").innerHTML =
+"🏆 Quiz terminado";
+
+document.getElementById("answers").innerHTML = "";
+
+document.getElementById("timer").innerHTML = "";
+
+document.getElementById("result").innerHTML =
+`
+✅ Correctas: ${correctAnswers}<br>
+❌ Incorrectas: ${wrongAnswers}<br>
+📊 Calificación: ${Math.round((correctAnswers/quizData.length)*100)}%
+`;
+
+return;
+
+}
+
+timeLeft = 15;
+
+document.getElementById("timer").innerHTML =
+"⏳ Tiempo: " + timeLeft;
+
+timer = setInterval(()=>{
+
+timeLeft--;
+
+document.getElementById("timer").innerHTML =
+"⏳ Tiempo: " + timeLeft;
+
+if(timeLeft <= 0){
+
+clearInterval(timer);
+
+wrongAnswers++;
+
+currentQuestion++;
+
+showQuestion();
+
+}
+
+},1000);
+
+const q = quizData[currentQuestion];
+
+document.getElementById("question").innerHTML =
+q.question;
+
+let html = "";
+
+const shuffled = [...q.answers]
+.sort(()=>Math.random()-0.5);
+
+shuffled.forEach(answer=>{
+
+html += `
+<button onclick="checkAnswer('${answer}')">
+${answer}
+</button>
+`;
+
+});
+
+document.getElementById("answers").innerHTML = html;
+
+}
+
+function checkAnswer(answer){
+
+clearInterval(timer);
+
+if(answer === quizData[currentQuestion].correct){
+
+correctAnswers++;
+
+}else{
+
+wrongAnswers++;
+
+}
+
+currentQuestion++;
+
+setTimeout(()=>{
+
+showQuestion();
+
+},500);
+
+}
+
+startQuiz();
+
+
+function toggleMode(){
+
+document.body.classList.toggle("light-mode");
+
+}
+const hiddenElements=document.querySelectorAll('.hidden');
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add('show');
+
+}
+
+});
+
+});
+
+hiddenElements.forEach((el)=>observer.observe(el));
+const frases=[
+
+"🌍 El futuro depende de nuestras acciones.",
+"♻ Pequeñas acciones generan grandes cambios.",
+"💧 Cuidar el agua es cuidar la vida.",
+"🌱 Juntos podemos salvar el planeta."
+
+];
+
+setInterval(()=>{
+
+document.getElementById("frase").innerHTML=
+
+frases[Math.floor(Math.random()*frases.length)];
+
+},3000);
+startQuiz();
+</script>
+
+</body>
+</html>
